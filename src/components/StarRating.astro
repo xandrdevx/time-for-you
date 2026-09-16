@@ -1,0 +1,26 @@
+---
+// Renders a 1-5 star rating as filled/empty star characters, with an
+// accessible label for screen readers. Shared by the reviews page and the
+// home page's review teaser.
+interface Props {
+  rating: number;
+}
+
+const TOTAL_STARS = 5;
+const { rating } = Astro.props;
+const filledStars = '★'.repeat(rating);
+const emptyStars = '☆'.repeat(TOTAL_STARS - rating);
+---
+
+<span class="star-rating" aria-label={`${rating} van ${TOTAL_STARS} sterren`}>
+  <span aria-hidden="true">{filledStars}{emptyStars}</span>
+</span>
+
+<style>
+  .star-rating {
+    display: inline-block;
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+</style>

@@ -1,0 +1,38 @@
+---
+// Reviews list — the live site paginates ~12 per page across ~5 pages;
+// this migration currently only has page 1's 12 reviews (see
+// CONTENT_TODO.md for the remaining pages still to migrate).
+export const prerender = true;
+
+import Layout from '@layouts/Layout.astro';
+import StarRating from '@components/StarRating.astro';
+import { getCollection } from 'astro:content';
+import { REVIEWS_PER_PAGE } from '@config/site';
+import '@styles/pages/recensies.css';
+
+const reviews = await getCollection('reviews');
+const visibleReviews = reviews.slice(0, REVIEWS_PER_PAGE);
+---
+
+<Layout title="Recensies" description="Lees wat klanten zeggen over Time For You.">
+  <div class="page-container">
+    <div class="reviews-header">
+      <h1>Recensies</h1>
+      <a class="button" href="/contacteer-mij">Recensie Toevoegen</a>
+    </div>
+
+    <div class="review-grid">
+      {visibleReviews.map((review) => (
+        <div class="card review-card">
+          <StarRating rating={review.data.rating} />
+          <p>&ldquo;{review.data.text}&rdquo;</p>
+          <cite>{review.data.author} — {review.data.date}</cite>
+        </div>
+      ))}
+    </div>
+
+    <p class="pagination-note">
+      Pagina 1 van de recensies. Meer recensies volgen zodra ze gemigreerd zijn.
+    </p>
+  </div>
+</Layout>

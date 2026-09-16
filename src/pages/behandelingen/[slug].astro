@@ -1,0 +1,55 @@
+---
+// Treatment detail template. Renders whatever the content collection entry
+// has; falls back to a "more info coming soon" message when a treatment
+// doesn't have fullDescription yet (only kashmiri-tantra does right now —
+// see content-nl.md § Behandelingen).
+export const prerender = true;
+
+import Layout from '@layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import '@styles/pages/behandeling-detail.css';
+
+export async function getStaticPaths() {
+  const treatments = await getCollection('treatments');
+  return treatments.map((treatment) => ({
+    params: { slug: treatment.data.slug },
+    props: { treatment },
+  }));
+}
+
+interface Props {
+  treatment: CollectionEntry<'treatments'>;
+}
+
+const { treatment } = Astro.props;
+const { name, price, fullDescription, shortDescription, slug } = treatment.data;
+
+const FALLBACK_DETAIL_MESSAGE = 'Meer info volgt binnenkort.';
+---
+
+<Layout title={name} description={shortDescription}>
+  <div class="page-container treatment-detail">
+    <img
+      class="treatment-detail__image"
+      src={`/images/treatments/${slug}.jpg`}
+      alt={name}
+      width="800"
+      height="450"
+      loading="lazy"
+    />
+
+    <h1>{name}</h1>
+    <span class="treatment-detail__price">€{price}</span>
+
+    {fullDescription ? (
+      <div class="treatment-detail__body">{fullDescription}</div>
+    ) : (
+      <p class="treatment-detail__placeholder-note">{FALLBACK_DETAIL_MESSAGE}</p>
+    )}
+
+    <div class="treatment-detail__actions">
+      <a class="button" href="/contacteer-mij">Ik heb een vraag</a>
+      <a class="button button--secondary" href="/contacteer-mij">Extra info</a>
+    </div>
+  </div>
+</Layout>

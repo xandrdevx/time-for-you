@@ -1,0 +1,77 @@
+---
+// FAQ page — 5 Q&A pairs, rendered as a native <details> accordion.
+export const prerender = true;
+
+import Layout from '@layouts/Layout.astro';
+import '@styles/pages/faq.css';
+---
+
+<Layout title="FAQ" description="Veelgestelde vragen over massages bij Time For You.">
+  <div class="page-container">
+    <h1>FAQ</h1>
+    <p>
+      Als je vragen hebt staat deze misschien hier al tussen. Heb je vragen over deze vragen of
+      andere, neem aub contact op.
+    </p>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Is massage voor iedereen?</summary>
+        <div class="faq-item__body">
+          <p>
+            Ja natuurlijk. Iedereen is welkom. Er wordt geen oordeel over jou geveld. Je bent wie
+            je bent en je bent mooi zoals je bent.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Kan de masseur een massage weigeren?</summary>
+        <div class="faq-item__body">
+          <p>Ja dat kan. Er zijn enkele contra-indicaties:</p>
+          <ul>
+            <li>geen massage in de eerste 3 maand van de zwangerschap (foetus kan loslaten)</li>
+            <li>extreme vermoeidheid (onvoldoende verwerking van massageprikkels)</li>
+            <li>koorts (massage kan de verhoogde stofwisseling verergeren)</li>
+            <li>kanker (in overleg met je arts toch mogelijk)</li>
+            <li>
+              cardiovasculaire aandoening: hartprobleem, hoge bloeddruk (door ontspanning kan
+              hartritme dalen, overleg met je arts)
+            </li>
+            <li>infectieziekten: griep, verkoudheid ... (massage kan de symptomen verergeren)</li>
+            <li>steenpuisten en besmettelijke huidaandoeningen (besmettingsgevaar en uitbreidingsgevaar)</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Moet ik zelf iets meebrengen?</summary>
+        <div class="faq-item__body">
+          <p>
+            Nee. Warme olie en handdoeken zijn voorzien. Je hoeft niets zelf mee te brengen. Heb
+            je echter een olie van jezelf die je graag wil dat gebruikt wordt dan mag je die
+            gerust meebrengen.
+          </p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Hoe kan ik betalen?</summary>
+        <div class="faq-item__body">
+          <p>Je kan contant betalen. Graag gepast aub. Of je kan via de bankapp betalen.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is er douchemogelijkheid?</summary>
+        <div class="faq-item__body">
+          <p>
+            Als je het niet fijn vindt dat er olie op je huid zit na de massage is er de
+            mogelijkheid om te douchen. Hiervoor vraag ik je vriendelijk om eigen producten mee te
+            brengen. Handdoeken zijn er voldoende. Wel graag op voorhand laten weten aub.
+          </p>
+        </div>
+      </details>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,169 @@
+---
+// Site footer: newsletter signup (visual-only stub for now), contact
+// block, and social links. Mirrors the approved Footer.dc.html wireframe
+// with the new color tokens.
+import {
+  BUSINESS_SLOGAN,
+  CONTACT_ADDRESS,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+  CONTACT_EMAIL,
+  SOCIAL_LINKS,
+  NEWSLETTER_DISCLAIMER,
+  COPYRIGHT_NOTICE,
+  DEVELOPER_CREDIT,
+} from '@config/site';
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <section class="site-footer__column" aria-labelledby="newsletter-heading">
+      <h2 id="newsletter-heading">Nieuwsbrief</h2>
+      <form class="newsletter-form" novalidate>
+        <div class="field">
+          <label for="newsletter-name">Naam</label>
+          <input id="newsletter-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="newsletter-email">E-mailadres</label>
+          <input id="newsletter-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <button type="submit" class="button">Inschrijven</button>
+        <!-- TODO: wire to Cloudflare Worker POST /api/newsletter/subscribe -->
+        <p class="newsletter-form__disclaimer">
+          {NEWSLETTER_DISCLAIMER.map((line) => <>{line}<br /></>)}
+        </p>
+      </form>
+    </section>
+
+    <section class="site-footer__column" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <address>
+        {CONTACT_ADDRESS}<br />
+        <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE_DISPLAY}</a><br />
+        <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </address>
+    </section>
+
+    <section class="site-footer__column" aria-labelledby="social-heading">
+      <h2 id="social-heading">Volg mij</h2>
+      <ul class="social-links">
+        <li><a href={SOCIAL_LINKS.facebook} target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        <li><a href={SOCIAL_LINKS.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="site-footer__bottom">
+    <p>{BUSINESS_SLOGAN}</p>
+    <p>{COPYRIGHT_NOTICE}</p>
+    <p class="site-footer__credit">{DEVELOPER_CREDIT}</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  .site-footer__inner {
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding: var(--space-2xl) var(--space-lg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .site-footer__column h2 {
+    color: var(--color-surface);
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .site-footer address {
+    font-style: normal;
+    line-height: 1.8;
+  }
+
+  .site-footer a {
+    color: var(--color-primary-light);
+  }
+
+  .site-footer a:hover,
+  .site-footer a:focus-visible {
+    color: var(--color-glow);
+  }
+
+  .newsletter-form .field label {
+    color: var(--color-bg);
+  }
+
+  .newsletter-form__disclaimer {
+    font-size: 0.75rem;
+    color: color-mix(in srgb, var(--color-bg) 70%, transparent);
+    margin-top: var(--space-sm);
+    line-height: 1.5;
+  }
+
+  .social-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .site-footer__bottom {
+    border-top: 1px solid color-mix(in srgb, var(--color-bg) 25%, transparent);
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    font-size: 0.85rem;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+  }
+
+  .site-footer__credit {
+    color: color-mix(in srgb, var(--color-bg) 65%, transparent);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 1024px) {
+    .site-footer__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-footer__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .site-footer__bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>
+
+<script>
+  // Client-side validation only — no submission target yet (see brief:
+  // "Out of scope for this prototype").
+  const newsletterForm = document.querySelector<HTMLFormElement>('.newsletter-form');
+  newsletterForm?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    if (newsletterForm.checkValidity()) {
+      // TODO: wire to Cloudflare Worker POST /api/newsletter/subscribe
+      newsletterForm.reset();
+    } else {
+      newsletterForm.reportValidity();
+    }
+  });
+</script>

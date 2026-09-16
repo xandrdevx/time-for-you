@@ -1,0 +1,44 @@
+.treatment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.treatment-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.treatment-card img {
+  border-radius: var(--radius-card);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.treatment-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0;
+}
+
+.treatment-card .price {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.treatment-card .read-more {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .treatment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .treatment-grid {
+    grid-template-columns: 1fr;
+  }
+}

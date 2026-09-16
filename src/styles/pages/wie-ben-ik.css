@@ -1,0 +1,23 @@
+.bio {
+  max-width: 70ch;
+  margin-inline: auto;
+}
+
+.bio__portrait {
+  border-radius: var(--radius-card);
+  margin-bottom: var(--space-xl);
+  aspect-ratio: 3 / 4;
+  max-width: 320px;
+  object-fit: cover;
+  margin-inline: auto;
+}
+
+.bio__closing {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-top: var(--space-xl);
+}

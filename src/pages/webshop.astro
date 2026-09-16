@@ -1,0 +1,53 @@
+---
+// Webshop: category filter pills + product grid.
+// The individual catalog shown here is a labeled placeholder — the live
+// site's category pages only exposed thumbnails, not real product data.
+// See CONTENT_TODO.md.
+export const prerender = true;
+
+import Layout from '@layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import '@styles/pages/webshop.css';
+
+const products = await getCollection('products');
+
+const CATEGORY_LABELS: Record<string, string> = {
+  olien: "Oliën",
+  producten: 'Producten',
+  aromas: "Aroma's",
+};
+---
+
+<Layout title="Webshopje" description="Bekijk de producten uit het Time For You webshopje.">
+  <div class="page-container">
+    <h1 class="section-heading">Webshopje</h1>
+    <p class="webshop-note">
+      Voorbeeldcatalogus — de echte productfoto's en -namen volgen nog van Stephane.
+    </p>
+
+    <nav class="category-pills" aria-label="Filter op categorie">
+      <a class="category-pill" aria-current="true" href="/webshop">Alles</a>
+      {Object.entries(CATEGORY_LABELS).map(([value, label]) => (
+        <a class="category-pill" href={`/webshop#${value}`}>{label}</a>
+      ))}
+    </nav>
+
+    <div class="product-grid">
+      {products.map((product) => (
+        <article class="card product-card" id={product.data.category}>
+          <img
+            src={`/images/webshop/${product.data.slug}.jpg`}
+            alt={product.data.name}
+            width="320"
+            height="320"
+            loading="lazy"
+          />
+          <h2>{product.data.name}</h2>
+          <span class="price">€{product.data.price}</span>
+          <button type="button" class="button">In winkelwagen</button>
+          <!-- TODO: wire to Cloudflare Worker POST /api/cart/add -->
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>

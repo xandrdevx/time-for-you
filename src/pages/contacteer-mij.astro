@@ -1,0 +1,151 @@
+---
+// Contact page: booking form + feedback form + contact details.
+// Both forms are visual-only stubs — styled and client-validated, but not
+// wired to a backend yet (see brief "Out of scope for this prototype").
+export const prerender = true;
+
+import Layout from '@layouts/Layout.astro';
+import {
+  CONTACT_ADDRESS,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+  CONTACT_EMAIL,
+} from '@config/site';
+import {
+  MASSAGE_TYPE_OPTIONS,
+  AVAILABLE_TIME_SLOTS,
+  FEEDBACK_TYPE_OPTIONS,
+} from '@config/booking-form';
+import '@styles/pages/contacteer-mij.css';
+---
+
+<Layout title="Contacteer mij" description="Boek een afspraak of stel een vraag aan Stephane.">
+  <div class="page-container">
+    <h1 class="section-heading">Contacteer mij</h1>
+
+    <div class="contact-layout">
+      <div class="card contact-details">
+        <h2>Gegevens</h2>
+        <address>
+          {CONTACT_ADDRESS}<br />
+          <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE_DISPLAY}</a><br />
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </address>
+      </div>
+
+      <div class="contact-forms">
+        <form class="card booking-form" novalidate aria-labelledby="booking-heading">
+          <h2 id="booking-heading">Boekingsformulier</h2>
+          <p>In dit gedeelte kan je vragen stellen over of een boeking plannen.</p>
+
+          <div class="field">
+            <label for="booking-name">Naam</label>
+            <input id="booking-name" name="name" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="booking-phone">GSM/Telefoon</label>
+            <input id="booking-phone" name="phone" type="tel" required />
+          </div>
+
+          <div class="field">
+            <label for="booking-email">E-mail adres</label>
+            <input id="booking-email" name="email" type="email" required />
+          </div>
+
+          <div class="field">
+            <label for="booking-massage-type">Massagesoort</label>
+            <select id="booking-massage-type" name="massageType" required>
+              {MASSAGE_TYPE_OPTIONS.map((option) => <option value={option}>{option}</option>)}
+            </select>
+          </div>
+
+          <div class="field">
+            <span>Mogelijke momenten</span>
+            <div class="checkbox-group">
+              {AVAILABLE_TIME_SLOTS.map((slot, index) => (
+                <label class="checkbox-option">
+                  <input type="checkbox" name="timeSlots" value={slot} id={`time-slot-${index}`} />
+                  {slot}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="booking-question">Uw vraag</label>
+            <textarea id="booking-question" name="question"></textarea>
+          </div>
+
+          <p class="form-disclaimer">Wij antwoorden zo snel mogelijk via whatsapp indien mogelijk.</p>
+
+          <button type="submit" class="button">Indienen</button>
+          <!-- TODO: wire to Cloudflare Worker POST /api/bookings -->
+        </form>
+
+        <form class="card feedback-form" novalidate aria-labelledby="feedback-heading">
+          <h2 id="feedback-heading">Feedbackformulier</h2>
+          <p>In dit gedeelte kan je je feedback of je opmerkingen geven.</p>
+
+          <div class="field">
+            <span>Feedback Type</span>
+            <div class="radio-group">
+              {FEEDBACK_TYPE_OPTIONS.map((option, index) => (
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="feedbackType"
+                    value={option}
+                    required
+                    checked={index === 0}
+                  />
+                  {option}
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="feedback-name">Naam</label>
+            <input id="feedback-name" name="name" type="text" required />
+          </div>
+
+          <div class="field">
+            <label for="feedback-phone">GSM/Telefoon</label>
+            <input id="feedback-phone" name="phone" type="tel" required />
+          </div>
+
+          <div class="field">
+            <label for="feedback-email">Email</label>
+            <input id="feedback-email" name="email" type="email" required />
+          </div>
+
+          <div class="field">
+            <label for="feedback-message">Feedback</label>
+            <textarea id="feedback-message" name="message" required></textarea>
+          </div>
+
+          <p class="form-disclaimer">We horen graag je feedback. Dankjewel voor je inbreng.</p>
+
+          <button type="submit" class="button">Verzend</button>
+          <!-- TODO: wire to Cloudflare Worker POST /api/feedback -->
+        </form>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Client-side validation only, both forms — no submission target yet.
+  document.querySelectorAll<HTMLFormElement>('.booking-form, .feedback-form').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (form.checkValidity()) {
+        // TODO: wire each form to its respective Cloudflare Worker endpoint
+        form.reset();
+      } else {
+        form.reportValidity();
+      }
+    });
+  });
+</script>
