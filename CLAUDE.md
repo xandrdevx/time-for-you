@@ -50,6 +50,7 @@ npm run preview   # preview production build
 - Keep the codebase lean — avoid heavy dependencies given the Cloudflare free-tier constraints.
 - **Naming:** use human-friendly, descriptive names for every variable, function, and constant — no single-letter or cryptic abbreviations unless it's a truly trivial/local index.
 - **No magic numbers (or strings):** every meaningful value gets a named constant instead of being inlined. If a value is likely to change or is reused (prices, limits, timeouts, breakpoints, API endpoints, etc.), put it in a dedicated config file (e.g. `config.ts` / `constants.ts`) rather than scattering it through the code.
+- **Always try to make everything as dynamic as possible**
 
 ## Styling / CSS
 
