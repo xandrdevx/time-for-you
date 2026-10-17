@@ -1,0 +1,23 @@
+---
+import '../styles/newsletter.css';
+import { NEWSLETTER_TEXT } from '../config/siteConfig';
+---
+
+<section class="newsletter page-section" aria-labelledby="newsletter-heading">
+  <div class="page-section__inner newsletter__inner">
+    <h2 id="newsletter-heading">{NEWSLETTER_TEXT.heading}</h2>
+    <p class="newsletter__subheading">{NEWSLETTER_TEXT.subheading}</p>
+
+    <!-- UI only for now: submission handling (D1 storage) comes in a later task. -->
+    <form class="newsletter__form" method="post" action="#">
+      <label class="visually-hidden" for="newsletter-name">Naam</label>
+      <input id="newsletter-name" name="name" type="text" placeholder="Naam" autocomplete="name" required />
+      <label class="visually-hidden" for="newsletter-email">E-mail</label>
+      <input id="newsletter-email" name="email" type="email" placeholder="E-mail" autocomplete="email" required />
+      <button class="button" type="submit">{NEWSLETTER_TEXT.buttonLabel}</button>
+    </form>
+
+    <p class="newsletter__note">{NEWSLETTER_TEXT.privacyNote}</p>
+    {NEWSLETTER_TEXT.spamFolderNotes.map((note) => <p class="newsletter__note">{note}</p>)}
+  </div>
+</section>

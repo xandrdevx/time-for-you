@@ -1,0 +1,31 @@
+---
+import '../styles/footer.css';
+import { CONTACT_DETAILS, OPENING_HOURS_LINES, SITE_NAME, SOCIAL_LINKS } from '../config/siteConfig';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <address class="site-footer__contact">
+      <p>{CONTACT_DETAILS.location}</p>
+      <p><a href={CONTACT_DETAILS.phoneLink}>{CONTACT_DETAILS.phone}</a></p>
+      <p><a href={`mailto:${CONTACT_DETAILS.email}`}>{CONTACT_DETAILS.email}</a></p>
+    </address>
+
+    <ul class="site-footer__hours">
+      {OPENING_HOURS_LINES.map((line) => <li>{line}</li>)}
+    </ul>
+
+    <ul class="site-footer__social">
+      {
+        SOCIAL_LINKS.map((link) => (
+          <li>
+            <a href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <p class="site-footer__copyright">© {currentYear} {SITE_NAME}</p>
+</footer>

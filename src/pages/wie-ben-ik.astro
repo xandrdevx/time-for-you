@@ -1,0 +1,28 @@
+---
+import '../styles/who-am-i.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import { SITE_CLOSING_LINE } from '../config/siteConfig';
+import { WHO_AM_I_CONTENT } from '../config/whoAmIContent';
+---
+
+<BaseLayout title={WHO_AM_I_CONTENT.pageHeading}>
+  <section class="who-am-i page-section">
+    <div class="page-section__inner who-am-i__layout">
+      <div class="who-am-i__photo" role="img" aria-label={WHO_AM_I_CONTENT.photoPlaceholderLabel}>
+        <!-- TODO: replace with the client's photo ("Ikke 1.jpg") once supplied. -->
+        <span>{WHO_AM_I_CONTENT.photoPlaceholderLabel}</span>
+      </div>
+
+      <div class="who-am-i__text reading-width">
+        <h1>{WHO_AM_I_CONTENT.pageHeading}</h1>
+        <h2>{WHO_AM_I_CONTENT.welcomeHeading}</h2>
+        <!-- TODO: paste the client's original "Wie ben ik?" text here once supplied. -->
+        <p class="who-am-i__todo">{WHO_AM_I_CONTENT.textPlaceholder}</p>
+        <p class="who-am-i__closing">{SITE_CLOSING_LINE}</p>
+      </div>
+    </div>
+  </section>
+
+  <NewsletterSignup />
+</BaseLayout>

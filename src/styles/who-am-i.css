@@ -1,0 +1,40 @@
+.who-am-i__layout {
+  display: grid;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.who-am-i__photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 5;
+  max-width: 24rem;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: var(--radius-medium);
+  background: var(--color-sand-dark);
+  color: var(--color-ink-soft);
+  box-shadow: var(--shadow-soft);
+}
+
+.who-am-i__todo {
+  padding: var(--space-3);
+  border: 2px dashed var(--color-terracotta);
+  border-radius: var(--radius-medium);
+  color: var(--color-ink-soft);
+}
+
+.who-am-i__closing {
+  margin-top: var(--space-4);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--color-terracotta-dark);
+}
+
+@media (min-width: 48rem) {
+  .who-am-i__layout {
+    grid-template-columns: 1fr 1.4fr;
+  }
+}

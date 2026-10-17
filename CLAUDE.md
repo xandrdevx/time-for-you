@@ -22,15 +22,23 @@ Rebuild of **time-for-you.be**, a massage business website (original: https://ww
 
 ## Commands
 
-Adjust these once the actual `package.json` scripts are in place:
-
 ```bash
 npm run dev       # local dev server
 npm run build     # production build
 npm run preview   # preview production build
 ```
 
+## Status
+
+- Astro project is set up (static output, no Cloudflare adapter yet). Built: `Header`, `Footer`, `NewsletterSignup`, `BaseLayout`, Home (`/`) and Wie ben ik (`/wie-ben-ik`).
+- Plan: `PLAN.md`; wireframes for all 9 pages: `docs/wireframes/`.
+- **Open item for the client:** supply the original "Wie ben ik?" text, the logo and the photo ("Ikke 1.jpg"). Until then `src/config/whoAmIContent.ts` and `src/pages/wie-ben-ik.astro` contain TODO placeholders.
+- **Open questions:** opening hours "Ma-Do : 18h30" kept verbatim (ask about a closing time); the WhatsApp link `wa.me/Stephane` looks invalid and is left out of `SOCIAL_LINKS`.
+- Newsletter form is UI only; storage in D1 is not built yet.
+
 ## Architecture notes
+
+- `src/config/` holds site constants and verbatim page copy; `src/types/` shared types; `src/layouts/BaseLayout.astro` wraps every page; styles are in `src/styles/` (`global.css` theme + one file per page/component).
 
 - Astro pages/components render the public site.
 - Cloudflare Workers handle backend logic: API routes, webshop payment flow.
