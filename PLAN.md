@@ -19,7 +19,9 @@ The original text of **Wie ben ik?**, the logo and the photo ("Ikke 1.jpg") stil
 | FAQ | Expandable questions (details/summary) | wireframe |
 
 ## Design
-Sand, terracotta and sage palette; serif headings, sans-serif body; mobile first; theme in `src/styles/global.css`, one CSS file per page/component; constants in `src/config`.
+Soft palette taken from the logo: deep teal `#0d6a8a` / `#0a5470` (text, buttons, footer), turquoise `#4fb0c6` (accents, focus), mint `#d6eae4` (newsletter, hero), cream `#fdf3dc` (warm cards) on a warm `#faf6ee` background. Serif headings, sans-serif body; mobile first; theme in `src/styles/global.css`, one CSS file per page/component; constants in `src/config`.
+
+Logo: `src/assets/images/logo-time-for-you.png` (optimised by `astro:assets`). The header shows only the lotus, cropped round via CSS, next to the name as text. A transparent/horizontal logo version from the client would be cleaner.
 
 ## Improvements over the current site
 One hero instead of five identical slides, a single menu, a visible contact button, labelled links, no stray text.

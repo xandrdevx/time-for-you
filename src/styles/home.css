@@ -1,6 +1,6 @@
 .home-hero {
-  background: linear-gradient(160deg, var(--color-sage) 0%, var(--color-sage-dark) 100%);
-  color: var(--color-white);
+  background: linear-gradient(160deg, var(--color-mint) 0%, var(--color-cream) 100%);
+  color: var(--color-ink);
   text-align: center;
   padding-top: var(--space-7);
   padding-bottom: var(--space-7);
@@ -8,22 +8,13 @@
 
 .home-hero__title {
   letter-spacing: 0.12em;
+  color: var(--color-teal-dark);
 }
 
 .home-hero__tagline {
   font-size: 1.25rem;
-  margin-bottom: var(--space-4);
-}
-
-.home-hero .button {
-  background: var(--color-sand);
-  border-color: var(--color-sand);
   color: var(--color-ink);
-}
-
-.home-hero .button:hover {
-  background: var(--color-white);
-  border-color: var(--color-white);
+  margin-bottom: var(--space-4);
 }
 
 .home-welcome__closing {
@@ -31,5 +22,17 @@
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-style: italic;
-  color: var(--color-terracotta-dark);
+  color: var(--color-teal);
+}
+
+.home-welcome__inner {
+  padding: var(--space-5) var(--space-4);
+  border-radius: var(--radius-large);
+  background: var(--color-cream);
+}
+
+@media (min-width: 48rem) {
+  .home-welcome__inner {
+    padding: var(--space-6);
+  }
 }

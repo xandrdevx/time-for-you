@@ -1,6 +1,7 @@
 ---
 import '../styles/header.css';
-import { CONTACT_PAGE, NAVIGATION_ITEMS, SITE_NAME } from '../config/siteConfig';
+import { Image } from 'astro:assets';
+import { CONTACT_PAGE, NAVIGATION_ITEMS, SITE_LOGO, SITE_NAME } from '../config/siteConfig';
 
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 
@@ -11,7 +12,18 @@ function isCurrentPage(path: string): boolean {
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-header__brand" href="/">{SITE_NAME}</a>
+    <a class="site-header__brand" href="/" aria-label={`${SITE_NAME} - naar de startpagina`}>
+      <span class="site-header__logo">
+        <Image
+          src={SITE_LOGO.image}
+          alt={SITE_LOGO.altText}
+          width={SITE_LOGO.headerWidth}
+          height={SITE_LOGO.headerHeight}
+          loading="eager"
+        />
+      </span>
+      <span class="site-header__name">{SITE_NAME}</span>
+    </a>
 
     <button
       class="site-header__toggle"

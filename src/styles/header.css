@@ -2,8 +2,8 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background: var(--color-sand);
-  border-bottom: 1px solid var(--color-sand-dark);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-mint);
 }
 
 .site-header__inner {
@@ -11,7 +11,7 @@
   max-width: var(--content-max-width);
   margin: 0 auto;
   min-height: var(--header-height);
-  padding: 0 var(--space-4);
+  padding: var(--space-2) var(--space-4);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,12 +19,38 @@
 }
 
 .site-header__brand {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-teal-dark);
   text-decoration: none;
+}
+
+/* The logo is a square with a background: show only the lotus, in a round frame. */
+.site-header__logo {
+  display: block;
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--color-mint);
+}
+
+.site-header__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+  transform: scale(1.45);
+  transform-origin: 50% 42%;
+}
+
+.site-header__name {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-style: italic;
+  font-weight: 600;
 }
 
 .site-header__toggle {
@@ -43,7 +69,7 @@
 .site-header__toggle-bar {
   display: block;
   height: 2px;
-  background: var(--color-ink);
+  background: var(--color-teal-dark);
 }
 
 .site-header__navigation {
@@ -53,8 +79,8 @@
   left: 0;
   right: 0;
   padding: var(--space-3) var(--space-4) var(--space-4);
-  background: var(--color-sand);
-  border-bottom: 1px solid var(--color-sand-dark);
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-mint);
   box-shadow: var(--shadow-soft);
 }
 
@@ -79,15 +105,18 @@
 
 .site-header__link:hover,
 .site-header__link[aria-current='page'] {
-  color: var(--color-terracotta-dark);
+  color: var(--color-teal);
 }
 
 .site-header__link[aria-current='page'] {
   text-decoration: underline;
+  text-decoration-color: var(--color-turquoise);
+  text-decoration-thickness: 2px;
   text-underline-offset: 0.35em;
 }
 
-@media (min-width: 64rem) {
+/* The full menu has 8 links plus a button, so it needs more room than the global desktop breakpoint. */
+@media (min-width: 75rem) {
   .site-header__toggle {
     display: none;
   }

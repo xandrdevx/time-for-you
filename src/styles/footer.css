@@ -1,11 +1,11 @@
 .site-footer {
-  background: var(--color-ink);
-  color: var(--color-sand);
+  background: var(--color-teal-dark);
+  color: var(--color-cream);
   padding: var(--space-5) var(--space-4) var(--space-4);
 }
 
 .site-footer a {
-  color: var(--color-sand);
+  color: var(--color-cream);
 }
 
 .site-footer__inner {

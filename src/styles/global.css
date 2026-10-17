@@ -1,14 +1,17 @@
-/* Theme: colors, fonts, spacing scale, resets and shared base styles. */
+/* Theme: colors, fonts, spacing scale, resets and shared base styles.
+   The palette is taken from the logo: deep teal text, turquoise lotus, mint background, cream sun. */
 
 :root {
-  --color-sand: #f6efe6;
-  --color-sand-dark: #e9dccb;
-  --color-terracotta: #b8603e;
-  --color-terracotta-dark: #96492b;
-  --color-sage: #7d8f78;
-  --color-sage-dark: #5b6c57;
-  --color-ink: #3a2f28;
-  --color-ink-soft: #6b5d52;
+  --color-background: #faf6ee;
+  --color-cream: #fdf3dc;
+  --color-cream-dark: #f1e6cb;
+  --color-mint: #d6eae4;
+  --color-mint-light: #e8f3ef;
+  --color-turquoise: #4fb0c6;
+  --color-teal: #0d6a8a;
+  --color-teal-dark: #0a5470;
+  --color-ink: #24404a;
+  --color-ink-soft: #52707a;
   --color-white: #ffffff;
 
   --font-heading: Georgia, 'Times New Roman', serif;
@@ -23,11 +26,12 @@
   --space-7: 6rem;
 
   --radius-medium: 0.75rem;
+  --radius-large: 1.5rem;
   --content-max-width: 72rem;
   --reading-max-width: 40rem;
   --tap-target-size: 2.75rem;
   --header-height: 4.5rem;
-  --shadow-soft: 0 0.5rem 1.5rem rgba(58, 47, 40, 0.12);
+  --shadow-soft: 0 0.5rem 1.5rem rgba(13, 106, 138, 0.12);
   --transition-speed: 0.2s;
 }
 
@@ -50,7 +54,7 @@ body {
   font-size: 1.0625rem;
   line-height: 1.7;
   color: var(--color-ink);
-  background: var(--color-sand);
+  background: var(--color-background);
 }
 
 h1,
@@ -60,6 +64,7 @@ h3 {
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 var(--space-3);
+  color: var(--color-teal-dark);
 }
 
 h1 {
@@ -81,11 +86,11 @@ img {
 }
 
 a {
-  color: var(--color-terracotta-dark);
+  color: var(--color-teal);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-sage-dark);
+  outline: 3px solid var(--color-turquoise);
   outline-offset: 2px;
 }
 
@@ -108,9 +113,9 @@ a {
   justify-content: center;
   min-height: var(--tap-target-size);
   padding: var(--space-2) var(--space-4);
-  border: 2px solid var(--color-terracotta);
+  border: 2px solid var(--color-teal);
   border-radius: 999px;
-  background: var(--color-terracotta);
+  background: var(--color-teal);
   color: var(--color-white);
   font: inherit;
   font-weight: 600;
@@ -120,13 +125,13 @@ a {
 }
 
 .button:hover {
-  background: var(--color-terracotta-dark);
-  border-color: var(--color-terracotta-dark);
+  background: var(--color-teal-dark);
+  border-color: var(--color-teal-dark);
 }
 
 .button--outline {
   background: transparent;
-  color: var(--color-terracotta-dark);
+  color: var(--color-teal-dark);
 }
 
 .button--outline:hover {

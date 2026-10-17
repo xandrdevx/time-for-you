@@ -1,6 +1,15 @@
 import type { ContactDetails, NavigationItem, SocialLink } from '../types/siteTypes';
 
+import logoImage from '../assets/images/logo-time-for-you.png';
+
 export const SITE_NAME = 'Time For You';
+
+export const SITE_LOGO = {
+  image: logoImage,
+  altText: 'Time For You logo: lotusbloem boven twee handen',
+  headerWidth: 168,
+  headerHeight: 168,
+};
 
 export const SITE_TAGLINE = 'Voor een ontspannende of energetische massage.';
 
