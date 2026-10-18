@@ -8,15 +8,15 @@ import { HOME_HERO_BUTTON_LABEL, HOME_WELCOME } from '../config/homeContent';
 
 <BaseLayout>
   <section class="home-hero page-section">
-    <div class="page-section__inner">
+    <div class="page-section__inner block home-hero__block">
       <h1 class="home-hero__title">{SITE_NAME.toUpperCase()}</h1>
       <p class="home-hero__tagline">{SITE_TAGLINE}</p>
-      <a class="button" href="/behandelingen">{HOME_HERO_BUTTON_LABEL}</a>
+      <a class="button button--light" href="/behandelingen">{HOME_HERO_BUTTON_LABEL}</a>
     </div>
   </section>
 
   <section class="home-welcome page-section">
-    <div class="page-section__inner reading-width home-welcome__inner">
+    <div class="page-section__inner reading-width block home-welcome__inner">
       <h2>{HOME_WELCOME.greeting}</h2>
       {HOME_WELCOME.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
       <p class="home-welcome__closing">{SITE_CLOSING_LINE}</p>

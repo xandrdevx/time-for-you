@@ -1,39 +1,48 @@
 # Home (built)
 
+Neutral page background; the logo colours only appear in the blocks. The hero title is always on one line.
+
 ## Mobile
 ```
 +--------------------------+
-| (lotus) Time For You [≡] |
+| [full logo]         [≡]  |
 +--------------------------+
-|  HERO (mint → cream)     |
-|    TIME FOR YOU          |
-|  Voor een ontspannende   |
-|  of energetische massage.|
-|  [Ontdek behandelingen]  |
-+--------------------------+
-| (cream card)             |
-| Beste bezoeker           |
-| (welcome text)           |
-| It's Time For You now!   |
-+--------------------------+
-| Nieuwsbrief (mint)       |
-| [Naam][E-mail][Schrijf]  |
-+--------------------------+
-| footer (deep teal)       |
+| (neutral page)           |
+| +----------------------+ |
+| | HERO block (teal)    | |
+| |  TIME FOR YOU        | |
+| |  Voor een ontspannende| |
+| |  of energetische ... | |
+| |  [Ontdek behandelingen]| |
+| +----------------------+ |
+| +----------------------+ |
+| | cream card           | |
+| | Beste bezoeker       | |
+| | (welcome text)       | |
+| | It's Time For You now!| |
+| +----------------------+ |
+| +----------------------+ |
+| | Nieuwsbrief (mint)   | |
+| | [Naam][E-mail][Schrijf]| |
+| +----------------------+ |
+| footer block (deep teal) |
 +--------------------------+
 ```
 
 ## Desktop
 ```
 +------------------------------------------------------------------------------------+
-| (lotus) Time For You   Home Wie Behandelingen ...                [Contacteer mij]  |
+| [full logo]  Home Wie ben ik? ... FAQ                          [Contacteer mij]    |
 +------------------------------------------------------------------------------------+
-|                  HERO (soft gradient, one button)                                  |
-+------------------------------------------------------------------------------------+
-|        Welcome text in a cream card, centered reading column                       |
-+------------------------------------------------------------------------------------+
-|   Nieuwsbrief:  [Naam]  [E-mail]  [Schrijf mij in]                                 |
-+------------------------------------------------------------------------------------+
-| footer: contact | hours | social                                                   |
+|   +--------------------------------------------------------------------------+    |
+|   |            HERO block (teal): TIME FOR YOU (one line), tagline, button    |    |
+|   +--------------------------------------------------------------------------+    |
+|        +----------------------------------------------+                           |
+|        | cream card: welcome text (reading column)    |                           |
+|        +----------------------------------------------+                           |
+|   +--------------------------------------------------------------------------+    |
+|   | Nieuwsbrief (mint):  [Naam]  [E-mail]  [Schrijf mij in]                   |    |
+|   +--------------------------------------------------------------------------+    |
+| footer block (deep teal): contact | hours | social                                 |
 +------------------------------------------------------------------------------------+
 ```

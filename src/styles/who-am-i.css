@@ -1,6 +1,7 @@
+/* Wie ben ik: photo and text each in a block; colours only inside those blocks. */
 .who-am-i__layout {
   display: grid;
-  gap: var(--space-5);
+  gap: var(--space-4);
   align-items: start;
 }
 
@@ -12,31 +13,52 @@
   max-width: 24rem;
   width: 100%;
   margin: 0 auto;
-  border: 0.5rem solid var(--color-cream);
+  border: 0.5rem solid var(--block-cream);
   border-radius: var(--radius-large);
-  background: var(--color-mint);
-  color: var(--color-ink-soft);
+  background: var(--block-mint);
+  color: var(--color-text-soft);
   box-shadow: var(--shadow-soft);
+}
+
+.who-am-i__text {
+  max-width: none;
+  background: var(--block-cream);
+  box-shadow: var(--shadow-soft);
+}
+
+.who-am-i__text h1 {
+  color: var(--block-teal-dark);
+}
+
+/* Scales down on narrow screens so the sentence stays on one line (one line on desktop for sure) */
+.who-am-i__welcome {
+  font-size: clamp(1.125rem, 2.6vw, 2rem);
+  font-weight: 500;
 }
 
 .who-am-i__todo {
   padding: var(--space-3);
-  border: 2px dashed var(--color-turquoise);
+  border: 2px dashed var(--block-turquoise);
   border-radius: var(--radius-medium);
-  background: var(--color-cream);
-  color: var(--color-ink-soft);
+  background: var(--color-surface);
+  color: var(--color-text-soft);
 }
 
 .who-am-i__closing {
-  margin-top: var(--space-4);
+  margin: var(--space-4) 0 0;
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-style: italic;
-  color: var(--color-teal);
+  color: var(--block-teal);
 }
 
 @media (min-width: 48rem) {
   .who-am-i__layout {
     grid-template-columns: 1fr 1.4fr;
+    gap: var(--space-5);
+  }
+
+  .who-am-i__welcome {
+    white-space: nowrap;
   }
 }

@@ -19,9 +19,11 @@ The original text of **Wie ben ik?**, the logo and the photo ("Ikke 1.jpg") stil
 | FAQ | Expandable questions (details/summary) | wireframe |
 
 ## Design
-Soft palette taken from the logo: deep teal `#0d6a8a` / `#0a5470` (text, buttons, footer), turquoise `#4fb0c6` (accents, focus), mint `#d6eae4` (newsletter, hero), cream `#fdf3dc` (warm cards) on a warm `#faf6ee` background. Serif headings, sans-serif body; mobile first; theme in `src/styles/global.css`, one CSS file per page/component; constants in `src/config`.
+**No site-wide colour theme.** The page itself is neutral (near-white `#fcfbf9`, dark grey text, neutral headings and links). The logo colours (`--block-*` variables in `src/styles/global.css`) are used only inside blocks: deep teal `#0d6a8a` / `#0a5470` (hero, footer, buttons), mint `#d6eae4` (newsletter, photo), cream `#fdf3dc` (welcome and text cards), turquoise `#4fb0c6` (small accents). Blocks are rounded, inset from the page edges and have a soft shadow. Serif headings, sans-serif body; mobile first; one CSS file per page/component; constants in `src/config`.
 
-Logo: `src/assets/images/logo-time-for-you.png` (optimised by `astro:assets`). The header shows only the lotus, cropped round via CSS, next to the name as text. A transparent/horizontal logo version from the client would be cleaner.
+Logo: `src/assets/images/logo-time-for-you.png` (optimised by `astro:assets`). The header shows the full logo (the name is part of the image) with a small border radius and no extra name text. A transparent/horizontal logo version from the client would be cleaner and more readable at header size.
+
+No-wrap rules: the navigation stays on one line (hamburger below 64rem; from 64rem font size and gaps scale with the viewport and links are `nowrap`); titles use clamp() font sizes and `nowrap` where needed (hero title, "Welkom. Mijn naam is Stephane.").
 
 ## Improvements over the current site
 One hero instead of five identical slides, a single menu, a visible contact button, labelled links, no stray text.

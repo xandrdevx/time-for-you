@@ -31,7 +31,8 @@ npm run preview   # preview production build
 ## Status
 
 - Astro project is set up (static output, no Cloudflare adapter yet). Built: `Header`, `Footer`, `NewsletterSignup`, `BaseLayout`, Home (`/`) and Wie ben ik (`/wie-ben-ik`).
-- Restyled with a soft palette from the logo (teal, turquoise, mint, cream; variables in `src/styles/global.css`). Logo lives in `src/assets/images/logo-time-for-you.png` and is used in the `Header` (lotus crop + name); logo constants are in `SITE_LOGO` (`src/config/siteConfig.ts`).
+- **No site-wide colour theme:** the page is neutral; the logo colours (`--block-*` variables in `src/styles/global.css`) are only used inside blocks (hero, cards, newsletter, footer, buttons). Logo lives in `src/assets/images/logo-time-for-you.png` and is shown in full in the `Header` (the name is part of the logo, no extra name text, small border radius); logo constants are in `SITE_LOGO` (`src/config/siteConfig.ts`).
+- Hard rules: the navbar never wraps (hamburger below 64rem, one line with scaling font/gaps from 64rem); titles must not wrap where it hurts layout (clamp() font sizes, `nowrap` where needed). Test on mobile too.
 - Plan: `PLAN.md`; wireframes for all 9 pages plus the header: `docs/wireframes/`.
 - If `npm run build` fails with "Cannot find native binding", run `npm install` (node_modules was installed on another platform).
 - **Open item for the client:** supply the original "Wie ben ik?" text, the logo and the photo ("Ikke 1.jpg"). Until then `src/config/whoAmIContent.ts` and `src/pages/wie-ben-ik.astro` contain TODO placeholders.

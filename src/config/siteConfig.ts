@@ -7,8 +7,9 @@ export const SITE_NAME = 'Time For You';
 export const SITE_LOGO = {
   image: logoImage,
   altText: 'Time For You logo: lotusbloem boven twee handen',
-  headerWidth: 168,
-  headerHeight: 168,
+  // 2x the largest displayed size (5.5rem) for sharp rendering on high-density screens
+  headerWidth: 176,
+  headerHeight: 176,
 };
 
 export const SITE_TAGLINE = 'Voor een ontspannende of energetische massage.';

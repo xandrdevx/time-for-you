@@ -1,18 +1,26 @@
-/* Theme: colors, fonts, spacing scale, resets and shared base styles.
-   The palette is taken from the logo: deep teal text, turquoise lotus, mint background, cream sun. */
+/* Base styles: neutral warm page, fonts, spacing scale, resets and shared components.
+   There is deliberately NO site-wide colour theme: the logo colours (teal, turquoise, mint, cream)
+   are only used inside blocks (hero, cards, newsletter, footer, buttons), never on the page itself. */
 
 :root {
-  --color-background: #faf6ee;
-  --color-cream: #fdf3dc;
-  --color-cream-dark: #f1e6cb;
-  --color-mint: #d6eae4;
-  --color-mint-light: #e8f3ef;
-  --color-turquoise: #4fb0c6;
-  --color-teal: #0d6a8a;
-  --color-teal-dark: #0a5470;
-  --color-ink: #24404a;
-  --color-ink-soft: #52707a;
+  /* Neutral page colours */
+  --color-page: #fcfbf9;
+  --color-surface: #ffffff;
+  --color-line: #e9e5de;
+  --color-text: #2e2e2e;
+  --color-text-soft: #5f5f5f;
+  --color-heading: #232323;
   --color-white: #ffffff;
+
+  /* Logo colours: only for use inside blocks */
+  --block-teal: #0d6a8a;
+  --block-teal-dark: #0a5470;
+  --block-turquoise: #4fb0c6;
+  --block-mint: #d6eae4;
+  --block-mint-light: #e8f3ef;
+  --block-cream: #fdf3dc;
+  --block-cream-dark: #f1e6cb;
+  --block-text-on-dark: #fdf3dc;
 
   --font-heading: Georgia, 'Times New Roman', serif;
   --font-body: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -25,18 +33,22 @@
   --space-6: 4rem;
   --space-7: 6rem;
 
+  --radius-small: 0.5rem;
   --radius-medium: 0.75rem;
   --radius-large: 1.5rem;
   --content-max-width: 72rem;
   --reading-max-width: 40rem;
   --tap-target-size: 2.75rem;
-  --header-height: 4.5rem;
-  --shadow-soft: 0 0.5rem 1.5rem rgba(13, 106, 138, 0.12);
+  --shadow-soft: 0 0.5rem 1.75rem rgba(40, 40, 40, 0.08);
   --transition-speed: 0.2s;
+
+  /* Heading sizes: scale down on narrow screens so titles stay on one line */
+  --font-size-title: clamp(1.75rem, 5vw, 3rem);
+  --font-size-section-heading: clamp(1.375rem, 3.5vw, 2rem);
 }
 
 /* Breakpoints (custom properties cannot be used in media queries):
-   tablet: 48rem, desktop: 64rem */
+   tablet: 48rem, desktop (full navigation bar): 64rem */
 
 *,
 *::before,
@@ -52,9 +64,9 @@ body {
   margin: 0;
   font-family: var(--font-body);
   font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--color-ink);
-  background: var(--color-background);
+  line-height: 1.75;
+  color: var(--color-text);
+  background: var(--color-page);
 }
 
 h1,
@@ -64,15 +76,16 @@ h3 {
   font-weight: 600;
   line-height: 1.2;
   margin: 0 0 var(--space-3);
-  color: var(--color-teal-dark);
+  color: var(--color-heading);
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-size: var(--font-size-title);
 }
 
 h2 {
-  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-size: var(--font-size-section-heading);
 }
 
 p {
@@ -86,16 +99,17 @@ img {
 }
 
 a {
-  color: var(--color-teal);
+  color: inherit;
+  text-underline-offset: 0.2em;
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-turquoise);
+  outline: 3px solid var(--block-turquoise);
   outline-offset: 2px;
 }
 
 .page-section {
-  padding: var(--space-6) var(--space-4);
+  padding: var(--space-5) var(--space-4);
 }
 
 .page-section__inner {
@@ -107,35 +121,46 @@ a {
   max-width: var(--reading-max-width);
 }
 
+/* A coloured block: rounded, inset from the page edges, colour set by the modifier or the page file */
+.block {
+  border-radius: var(--radius-large);
+  padding: var(--space-5) var(--space-4);
+}
+
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: var(--tap-target-size);
   padding: var(--space-2) var(--space-4);
-  border: 2px solid var(--color-teal);
+  border: 2px solid var(--block-teal);
   border-radius: 999px;
-  background: var(--color-teal);
+  background: var(--block-teal);
   color: var(--color-white);
   font: inherit;
   font-weight: 600;
+  white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
-  transition: background var(--transition-speed), border-color var(--transition-speed);
+  transition: background var(--transition-speed), border-color var(--transition-speed),
+    color var(--transition-speed);
 }
 
 .button:hover {
-  background: var(--color-teal-dark);
-  border-color: var(--color-teal-dark);
+  background: var(--block-teal-dark);
+  border-color: var(--block-teal-dark);
 }
 
-.button--outline {
-  background: transparent;
-  color: var(--color-teal-dark);
+/* For use on dark blocks */
+.button--light {
+  background: var(--block-cream);
+  border-color: var(--block-cream);
+  color: var(--block-teal-dark);
 }
 
-.button--outline:hover {
-  color: var(--color-white);
+.button--light:hover {
+  background: var(--color-white);
+  border-color: var(--color-white);
 }
 
 .visually-hidden {
@@ -145,6 +170,16 @@ a {
   overflow: hidden;
   clip: rect(0 0 0 0);
   white-space: nowrap;
+}
+
+@media (min-width: 48rem) {
+  .page-section {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .block {
+    padding: var(--space-6);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

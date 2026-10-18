@@ -1,11 +1,14 @@
+/* Footer: a deep teal block (logo colour) with rounded top corners. */
 .site-footer {
-  background: var(--color-teal-dark);
-  color: var(--color-cream);
+  margin-top: var(--space-5);
   padding: var(--space-5) var(--space-4) var(--space-4);
+  background: var(--block-teal-dark);
+  color: var(--block-text-on-dark);
+  border-radius: var(--radius-large) var(--radius-large) 0 0;
 }
 
 .site-footer a {
-  color: var(--color-cream);
+  color: var(--block-text-on-dark);
 }
 
 .site-footer__inner {
