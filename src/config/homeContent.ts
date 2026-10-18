@@ -27,4 +27,18 @@ export const HOME_WELCOME_IMAGE = {
   height: 400,
 };
 
-export const HOME_HERO_BUTTON_LABEL = 'Ontdek de behandelingen';
+// Photo carousel under the navbar. Slides are every image in `src/assets/images/home-carousel/`,
+// ordered by file name (hence the numeric prefixes), so adding a photo there adds a slide.
+export const HOME_CAROUSEL = {
+  ariaLabel: 'Sfeerfoto\'s van Time For You',
+  autoplayIntervalMilliseconds: 5000,
+  imageWidth: 1600,
+  defaultAltText: 'Sfeerfoto van een ontspannende massage',
+  // Alt text per file name (without folder); files without an entry use `defaultAltText`.
+  altTextByFileName: {
+    '01-massage-neck-and-shoulders.jpg': 'Massage van nek en schouders van een vrouw op een massagetafel',
+    '02-massage-back-wooden-floor.jpg': 'Rugmassage bij een vrouw met gesloten ogen, gezien van boven',
+    '03-massage-spa-lilies.jpg': 'Ontspannen vrouw op een massagetafel met handdoek, kaarsen, olie en witte lelies',
+    '04-massage-back-hands.jpg': 'Handen die over de rug van een vrouw masseren',
+  } as Record<string, string>,
+};

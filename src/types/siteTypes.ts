@@ -1,6 +1,13 @@
+import type { ImageMetadata } from 'astro';
+
 export interface NavigationItem {
   label: string;
   path: string;
+}
+
+export interface CarouselSlide {
+  image: ImageMetadata;
+  altText: string;
 }
 
 export interface SocialLink {

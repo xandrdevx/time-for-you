@@ -13,7 +13,6 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 | |  TIME FOR YOU        | |
 | |  Voor een ontspannende| |
 | |  of energetische ... | |
-| |  [Ontdek behandelingen]| |
 | +----------------------+ |
 | +----------------------+ |
 | | cream card           | |
@@ -35,8 +34,9 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 +------------------------------------------------------------------------------------+
 | [full logo]  Home Wie ben ik? ... FAQ                          [Contacteer mij]    |
 +------------------------------------------------------------------------------------+
+|  [ photo carousel, full width, photos only ]            ( o o o o )  dots below      |
 |   +--------------------------------------------------------------------------+    |
-|   |            HERO block (teal): TIME FOR YOU (one line), tagline, button    |    |
+|   |            HERO block (teal): TIME FOR YOU (one line), tagline            |    |
 |   +--------------------------------------------------------------------------+    |
 |  grey band:                                                                         |
 |     +-----------+----------------------------------------+                         |

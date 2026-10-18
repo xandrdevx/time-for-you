@@ -19,7 +19,7 @@
 }
 
 .home-hero__tagline {
-  margin-bottom: var(--space-4);
+  margin-bottom: 0;
   font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
 }
 

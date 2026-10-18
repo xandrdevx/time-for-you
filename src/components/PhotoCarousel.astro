@@ -1,0 +1,113 @@
+---
+import '../styles/carousel.css';
+import { Image } from 'astro:assets';
+import type { CarouselSlide } from '../types/siteTypes';
+
+interface Props {
+  slides: CarouselSlide[];
+  ariaLabel: string;
+  imageWidth: number;
+  autoplayIntervalMilliseconds: number;
+}
+
+const { slides, ariaLabel, imageWidth, autoplayIntervalMilliseconds } = Astro.props;
+---
+
+{
+  slides.length > 0 && (
+    <section
+      class="carousel"
+      aria-roledescription="carousel"
+      aria-label={ariaLabel}
+      data-autoplay-interval={autoplayIntervalMilliseconds}
+    >
+      <!-- Photos only: no text is ever placed over the slides, the dots sit below them. -->
+      <ul class="carousel__track">
+        {slides.map((slide, slideIndex) => (
+          <li
+            class="carousel__slide"
+            aria-roledescription="slide"
+            aria-label={`${slideIndex + 1} van ${slides.length}`}
+          >
+            <Image
+              class="carousel__image"
+              src={slide.image}
+              alt={slide.altText}
+              width={imageWidth}
+              loading={slideIndex === 0 ? 'eager' : 'lazy'}
+            />
+          </li>
+        ))}
+      </ul>
+
+      {slides.length > 1 && (
+        <div class="carousel__dots">
+          {slides.map((_, slideIndex) => (
+            <button
+              class="carousel__dot"
+              type="button"
+              aria-label={`Ga naar foto ${slideIndex + 1}`}
+              aria-current={slideIndex === 0 ? 'true' : undefined}
+            />
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
+<script>
+  const ACTIVE_ATTRIBUTE = 'aria-current';
+
+  document.querySelectorAll<HTMLElement>('.carousel').forEach((carousel) => {
+    const track = carousel.querySelector<HTMLElement>('.carousel__track');
+    const dots = Array.from(carousel.querySelectorAll<HTMLButtonElement>('.carousel__dot'));
+    if (!track || dots.length < 2) return;
+
+    const slideCount = dots.length;
+    const intervalMilliseconds = Number(carousel.dataset.autoplayInterval);
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let activeIndex = 0;
+    let autoplayTimer: number | undefined;
+
+    function showSlide(index: number): void {
+      const behavior: ScrollBehavior = prefersReducedMotion ? 'auto' : 'smooth';
+      track!.scrollTo({ left: index * track!.clientWidth, behavior });
+    }
+
+    function markActive(index: number): void {
+      activeIndex = index;
+      dots.forEach((dot, dotIndex) => {
+        if (dotIndex === index) dot.setAttribute(ACTIVE_ATTRIBUTE, 'true');
+        else dot.removeAttribute(ACTIVE_ATTRIBUTE);
+      });
+    }
+
+    function stopAutoplay(): void {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = undefined;
+    }
+
+    function startAutoplay(): void {
+      if (prefersReducedMotion || autoplayTimer !== undefined) return;
+      autoplayTimer = window.setInterval(
+        () => showSlide((activeIndex + 1) % slideCount),
+        intervalMilliseconds,
+      );
+    }
+
+    track.addEventListener('scroll', () => {
+      markActive(Math.round(track.scrollLeft / track.clientWidth));
+    });
+    dots.forEach((dot, dotIndex) => dot.addEventListener('click', () => showSlide(dotIndex)));
+
+    // Pause while the visitor interacts with the carousel.
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    carousel.addEventListener('focusin', stopAutoplay);
+    carousel.addEventListener('focusout', startAutoplay);
+    carousel.addEventListener('touchstart', stopAutoplay, { passive: true });
+
+    startAutoplay();
+  });
+</script>

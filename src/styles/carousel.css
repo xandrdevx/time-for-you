@@ -1,0 +1,74 @@
+/* Photo carousel: full width, directly under the navbar, in the normal flow.
+   Scroll-snap track (swipe on touch); the dots are below the photos, never on top of them. */
+.carousel {
+  --carousel-aspect-ratio: 4 / 3;
+  --carousel-max-height: 75vh;
+  --carousel-dot-size: 0.75rem;
+  --carousel-dot-color: #8a8a8a;
+  --carousel-dot-active-color: #1414f0;
+
+  background: var(--color-page);
+}
+
+.carousel__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.carousel__image {
+  width: 100%;
+  aspect-ratio: var(--carousel-aspect-ratio);
+  max-height: var(--carousel-max-height);
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+}
+
+/* Small visible dot inside a touch-friendly button */
+.carousel__dot {
+  display: grid;
+  place-items: center;
+  width: var(--tap-target-size);
+  height: var(--tap-target-size);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.carousel__dot::before {
+  content: '';
+  width: var(--carousel-dot-size);
+  height: var(--carousel-dot-size);
+  border: 1px solid var(--carousel-dot-color);
+  border-radius: 50%;
+}
+
+.carousel__dot[aria-current='true']::before {
+  border-color: var(--carousel-dot-active-color);
+  background: var(--carousel-dot-active-color);
+}
+
+@media (min-width: 48rem) {
+  .carousel {
+    --carousel-aspect-ratio: 16 / 6;
+  }
+}

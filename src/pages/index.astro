@@ -5,19 +5,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { SITE_NAME, SITE_TAGLINE } from '../config/siteConfig';
 import {
+  HOME_CAROUSEL,
   HOME_CLOSING_LINES,
-  HOME_HERO_BUTTON_LABEL,
   HOME_WELCOME,
   HOME_WELCOME_IMAGE,
 } from '../config/homeContent';
+import PhotoCarousel from '../components/PhotoCarousel.astro';
+import { HOME_CAROUSEL_SLIDES } from '../lib/homeCarouselSlides';
 ---
 
 <BaseLayout>
+  <PhotoCarousel
+    slides={HOME_CAROUSEL_SLIDES}
+    ariaLabel={HOME_CAROUSEL.ariaLabel}
+    imageWidth={HOME_CAROUSEL.imageWidth}
+    autoplayIntervalMilliseconds={HOME_CAROUSEL.autoplayIntervalMilliseconds}
+  />
+
   <section class="home-hero page-section">
     <div class="page-section__inner block home-hero__block">
       <h1 class="home-hero__title">{SITE_NAME.toUpperCase()}</h1>
       <p class="home-hero__tagline">{SITE_TAGLINE}</p>
-      <a class="button button--light" href="/behandelingen">{HOME_HERO_BUTTON_LABEL}</a>
     </div>
   </section>
 
