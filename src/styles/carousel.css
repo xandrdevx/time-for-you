@@ -1,0 +1,87 @@
+/* Photo carousel: full width, directly under the navbar, in the normal flow.
+   Scroll-snap track (swipe on touch); the progress dots sit on the photos, at the bottom centre. */
+.carousel {
+  --carousel-aspect-ratio: 3 / 2;
+  --carousel-max-height: 60vh;
+  --carousel-dot-size: 0.75rem;
+  --carousel-dot-color: #ffffff;
+  --carousel-dot-active-color: #1414f0;
+  --carousel-dots-offset-bottom: var(--space-2);
+
+  position: relative;
+  background: var(--color-page);
+}
+
+.carousel__track {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.carousel__image {
+  width: 100%;
+  aspect-ratio: var(--carousel-aspect-ratio);
+  max-height: var(--carousel-max-height);
+  object-fit: cover;
+  object-position: center;
+}
+
+/* The dots sit on the photo itself, centred at the bottom. They are the only thing over the photos
+   (no text is ever placed there). */
+.carousel__dots {
+  position: absolute;
+  bottom: var(--carousel-dots-offset-bottom);
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Small visible dot inside a touch-friendly button */
+.carousel__dot {
+  display: grid;
+  place-items: center;
+  width: var(--tap-target-size);
+  height: var(--tap-target-size);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* White ring with a soft dark halo so the dots stay visible on light and dark photos */
+.carousel__dot::before {
+  content: '';
+  width: var(--carousel-dot-size);
+  height: var(--carousel-dot-size);
+  border: 2px solid var(--carousel-dot-color);
+  border-radius: 50%;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.6);
+}
+
+.carousel__dot[aria-current='true']::before {
+  border-color: var(--carousel-dot-color);
+  background: var(--carousel-dot-active-color);
+}
+
+@media (min-width: 48rem) {
+  .carousel {
+    --carousel-aspect-ratio: 16 / 5;
+    --carousel-max-height: 50vh;
+  }
+}

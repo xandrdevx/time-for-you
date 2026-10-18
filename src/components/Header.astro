@@ -1,0 +1,83 @@
+---
+import '../styles/header.css';
+import { Image } from 'astro:assets';
+import { CONTACT_PAGE, NAVIGATION_ITEMS, SITE_LOGO, SITE_NAME } from '../config/siteConfig';
+
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function isCurrentPage(path: string): boolean {
+  return path === currentPath;
+}
+---
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" href="/" aria-label={`${SITE_NAME} - naar de startpagina`}>
+      <span class="site-header__logo">
+        <Image
+          src={SITE_LOGO.image}
+          alt={SITE_LOGO.altText}
+          width={SITE_LOGO.headerWidth}
+          height={SITE_LOGO.headerHeight}
+          loading="eager"
+        />
+      </span>
+    </a>
+
+    <button
+      class="site-header__toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+      aria-label="Menu openen"
+    >
+      <span class="site-header__toggle-bar"></span>
+      <span class="site-header__toggle-bar"></span>
+      <span class="site-header__toggle-bar"></span>
+    </button>
+
+    <nav id="main-navigation" class="site-header__navigation" aria-label="Hoofdmenu">
+      <ul class="site-header__list">
+        {
+          NAVIGATION_ITEMS.map((item) => (
+            <li>
+              <a
+                class="site-header__link"
+                href={item.path}
+                aria-current={isCurrentPage(item.path) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a class="button site-header__contact" href={CONTACT_PAGE.path}>{CONTACT_PAGE.label}</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggleButton = document.querySelector<HTMLButtonElement>('.site-header__toggle');
+  const navigation = document.querySelector<HTMLElement>('.site-header__navigation');
+  const OPEN_CLASS = 'is-open';
+  const LABEL_OPEN = 'Menu sluiten';
+  const LABEL_CLOSED = 'Menu openen';
+
+  function setMenuOpen(isOpen: boolean): void {
+    navigation?.classList.toggle(OPEN_CLASS, isOpen);
+    toggleButton?.setAttribute('aria-expanded', String(isOpen));
+    toggleButton?.setAttribute('aria-label', isOpen ? LABEL_OPEN : LABEL_CLOSED);
+  }
+
+  toggleButton?.addEventListener('click', () => {
+    setMenuOpen(!navigation?.classList.contains(OPEN_CLASS));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      setMenuOpen(false);
+      toggleButton?.focus();
+    }
+  });
+</script>

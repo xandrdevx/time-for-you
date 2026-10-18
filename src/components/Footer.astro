@@ -1,0 +1,46 @@
+---
+import '../styles/footer.css';
+import { SITE_NAME, SOCIAL_LINKS } from '../config/siteConfig';
+import { SOCIAL_ICONS, SOCIAL_ICON_VIEWBOX } from '../config/socialIcons';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <p class="site-footer__copyright">© {currentYear} {SITE_NAME}</p>
+
+    <ul class="site-footer__social">
+      {
+        SOCIAL_LINKS.map((link) => {
+          const icon = SOCIAL_ICONS[link.label];
+          return (
+            <li>
+              <a
+                class="site-footer__social-link"
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+              >
+                {icon && (
+                  <svg
+                    class="site-footer__social-icon"
+                    viewBox={SOCIAL_ICON_VIEWBOX}
+                    fill={icon.isOutline ? 'none' : 'currentColor'}
+                    stroke={icon.isOutline ? 'currentColor' : 'none'}
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d={icon.path} />
+                  </svg>
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
+</footer>

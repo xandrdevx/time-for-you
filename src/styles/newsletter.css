@@ -1,0 +1,91 @@
+/* Newsletter: plain white band, big logo on the left, signup form on the right (as on the original page). */
+.newsletter {
+  --newsletter-logo-size: 16rem;
+  --newsletter-field-height: 2.9rem;
+  --newsletter-field-border: #dcdcdc;
+  --newsletter-button-background: #1414f0;
+  --newsletter-column-gap: clamp(var(--space-4), 8vw, 11.5rem);
+
+  padding: var(--space-5) var(--space-4);
+  background: var(--color-white);
+}
+
+.newsletter__layout {
+  display: grid;
+  gap: var(--space-5);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.newsletter__brand {
+  margin: 0;
+}
+
+.newsletter__logo {
+  width: min(100%, var(--newsletter-logo-size));
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.newsletter__subheading {
+  margin-top: var(--space-1);
+}
+
+.newsletter__heading {
+  margin-bottom: var(--space-3);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.newsletter__form {
+  display: grid;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-4);
+}
+
+.newsletter__form input {
+  min-height: var(--newsletter-field-height);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--newsletter-field-border);
+  border-radius: 0;
+  font: inherit;
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
+.newsletter__submit {
+  min-height: var(--newsletter-field-height);
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: var(--newsletter-button-background);
+  color: var(--color-white);
+  font: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.newsletter__submit:hover {
+  filter: brightness(1.15);
+}
+
+.newsletter__note {
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 48rem) {
+  .newsletter {
+    padding-block: var(--space-6);
+  }
+
+  .newsletter__layout {
+    grid-template-columns: var(--newsletter-logo-size) minmax(0, 1fr);
+    column-gap: var(--newsletter-column-gap);
+    align-items: start;
+  }
+
+  .newsletter__form {
+    grid-template-columns: 1fr 1fr auto;
+    max-width: 36rem;
+  }
+}
