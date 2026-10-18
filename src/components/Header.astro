@@ -2,8 +2,10 @@
 import '../styles/header.css';
 import { Image } from 'astro:assets';
 import { CONTACT_PAGE, NAVIGATION_ITEMS, SITE_LOGO, SITE_NAME } from '../config/siteConfig';
+import { buildSitePath, stripSiteBase } from '../lib/sitePaths';
 
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const HOME_PATH = '/';
+const currentPath = stripSiteBase(Astro.url.pathname);
 
 function isCurrentPage(path: string): boolean {
   return path === currentPath;
@@ -12,7 +14,7 @@ function isCurrentPage(path: string): boolean {
 
 <header class="site-header">
   <div class="site-header__inner">
-    <a class="site-header__brand" href="/" aria-label={`${SITE_NAME} - naar de startpagina`}>
+    <a class="site-header__brand" href={buildSitePath(HOME_PATH)} aria-label={`${SITE_NAME} - naar de startpagina`}>
       <span class="site-header__logo">
         <Image
           src={SITE_LOGO.image}
@@ -43,7 +45,7 @@ function isCurrentPage(path: string): boolean {
             <li>
               <a
                 class="site-header__link"
-                href={item.path}
+                href={buildSitePath(item.path)}
                 aria-current={isCurrentPage(item.path) ? 'page' : undefined}
               >
                 {item.label}
@@ -52,7 +54,7 @@ function isCurrentPage(path: string): boolean {
           ))
         }
       </ul>
-      <a class="button site-header__contact" href={CONTACT_PAGE.path}>{CONTACT_PAGE.label}</a>
+      <a class="button site-header__contact" href={buildSitePath(CONTACT_PAGE.path)}>{CONTACT_PAGE.label}</a>
     </nav>
   </div>
 </header>
