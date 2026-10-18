@@ -1,8 +1,8 @@
 /* Photo carousel: full width, directly under the navbar, in the normal flow.
    Scroll-snap track (swipe on touch); the progress dots sit on the photos, at the bottom centre. */
 .carousel {
-  --carousel-aspect-ratio: 4 / 3;
-  --carousel-max-height: 75vh;
+  --carousel-aspect-ratio: 3 / 2;
+  --carousel-max-height: 60vh;
   --carousel-dot-size: 0.75rem;
   --carousel-dot-color: #ffffff;
   --carousel-dot-active-color: #1414f0;
@@ -81,6 +81,7 @@
 
 @media (min-width: 48rem) {
   .carousel {
-    --carousel-aspect-ratio: 16 / 6;
+    --carousel-aspect-ratio: 16 / 5;
+    --carousel-max-height: 50vh;
   }
 }
