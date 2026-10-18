@@ -21,7 +21,7 @@ const { slides, ariaLabel, imageWidth, autoplayIntervalMilliseconds } = Astro.pr
       aria-label={ariaLabel}
       data-autoplay-interval={autoplayIntervalMilliseconds}
     >
-      <!-- Photos only: no text is ever placed over the slides, the dots sit below them. -->
+      <!-- Photos only: no text is ever placed over the slides; only the progress dots overlay them. -->
       <ul class="carousel__track">
         {slides.map((slide, slideIndex) => (
           <li

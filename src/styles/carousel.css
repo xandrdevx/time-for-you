@@ -1,12 +1,14 @@
 /* Photo carousel: full width, directly under the navbar, in the normal flow.
-   Scroll-snap track (swipe on touch); the dots are below the photos, never on top of them. */
+   Scroll-snap track (swipe on touch); the progress dots sit on the photos, at the bottom centre. */
 .carousel {
   --carousel-aspect-ratio: 4 / 3;
   --carousel-max-height: 75vh;
   --carousel-dot-size: 0.75rem;
-  --carousel-dot-color: #8a8a8a;
+  --carousel-dot-color: #ffffff;
   --carousel-dot-active-color: #1414f0;
+  --carousel-dots-offset-bottom: var(--space-2);
 
+  position: relative;
   background: var(--color-page);
 }
 
@@ -37,9 +39,16 @@
   object-position: center;
 }
 
+/* The dots sit on the photo itself, centred at the bottom. They are the only thing over the photos
+   (no text is ever placed there). */
 .carousel__dots {
+  position: absolute;
+  bottom: var(--carousel-dots-offset-bottom);
+  left: 0;
+  right: 0;
   display: flex;
   justify-content: center;
+  pointer-events: none;
 }
 
 /* Small visible dot inside a touch-friendly button */
@@ -52,18 +61,21 @@
   border: 0;
   background: transparent;
   cursor: pointer;
+  pointer-events: auto;
 }
 
+/* White ring with a soft dark halo so the dots stay visible on light and dark photos */
 .carousel__dot::before {
   content: '';
   width: var(--carousel-dot-size);
   height: var(--carousel-dot-size);
-  border: 1px solid var(--carousel-dot-color);
+  border: 2px solid var(--carousel-dot-color);
   border-radius: 50%;
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.6);
 }
 
 .carousel__dot[aria-current='true']::before {
-  border-color: var(--carousel-dot-active-color);
+  border-color: var(--carousel-dot-color);
   background: var(--carousel-dot-active-color);
 }
 

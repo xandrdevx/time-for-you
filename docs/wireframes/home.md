@@ -34,7 +34,7 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 +------------------------------------------------------------------------------------+
 | [full logo]  Home Wie ben ik? ... FAQ                          [Contacteer mij]    |
 +------------------------------------------------------------------------------------+
-|  [ photo carousel, full width, photos only ]            ( o o o o )  dots below      |
+|  [ photo carousel, full width;  ( o o o o ) progress dots on the photo, bottom ]     |
 |   +--------------------------------------------------------------------------+    |
 |   |            HERO block (teal): TIME FOR YOU (one line), tagline            |    |
 |   +--------------------------------------------------------------------------+    |

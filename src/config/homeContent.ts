@@ -40,5 +40,6 @@ export const HOME_CAROUSEL = {
     '02-massage-back-wooden-floor.jpg': 'Rugmassage bij een vrouw met gesloten ogen, gezien van boven',
     '03-massage-spa-lilies.jpg': 'Ontspannen vrouw op een massagetafel met handdoek, kaarsen, olie en witte lelies',
     '04-massage-back-hands.jpg': 'Handen die over de rug van een vrouw masseren',
+    '05-massage-shoulder.jpg': 'Schoudermassage bij een vrouw die ontspannen op haar zij ligt',
   } as Record<string, string>,
 };
