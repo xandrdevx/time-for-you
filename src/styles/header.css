@@ -1,6 +1,6 @@
 /* The header shows only the full logo (the name is part of the logo image). */
 .site-header {
-  --header-logo-size: 4.5rem;
+  --header-logo-size: 3.75rem;
   --header-link-font-size: clamp(0.875rem, 0.55rem + 0.55vw, 1rem);
   --header-link-gap: clamp(0.625rem, 1.2vw, 1.25rem);
   --header-logo-radius: 0.5rem;
@@ -112,7 +112,7 @@
    viewport (see the variables above) so 8 links + button fit next to the logo without wrapping. */
 @media (min-width: 64rem) {
   .site-header {
-    --header-logo-size: 5.5rem;
+    --header-logo-size: 4.5rem;
   }
 
   .site-header__toggle {

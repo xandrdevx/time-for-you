@@ -7,7 +7,7 @@ export const SITE_NAME = 'Time For You';
 export const SITE_LOGO = {
   image: logoImage,
   altText: 'Time For You logo: lotusbloem boven twee handen',
-  // 2x the largest displayed size (5.5rem) for sharp rendering on high-density screens
+  // 2x the largest displayed size (4.5rem) for sharp rendering on high-density screens
   headerWidth: 176,
   headerHeight: 176,
   // 2x the displayed size of the large logo in the newsletter section (16rem)
