@@ -3,7 +3,8 @@ import '../styles/home.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { SITE_CLOSING_LINE, SITE_NAME, SITE_TAGLINE } from '../config/siteConfig';
-import { HOME_HERO_BUTTON_LABEL, HOME_WELCOME } from '../config/homeContent';
+import { Image } from 'astro:assets';
+import { HOME_HERO_BUTTON_LABEL, HOME_WELCOME, HOME_WELCOME_IMAGE } from '../config/homeContent';
 ---
 
 <BaseLayout>
@@ -16,10 +17,19 @@ import { HOME_HERO_BUTTON_LABEL, HOME_WELCOME } from '../config/homeContent';
   </section>
 
   <section class="home-welcome page-section">
-    <div class="page-section__inner reading-width block home-welcome__inner">
-      <h2>{HOME_WELCOME.greeting}</h2>
-      {HOME_WELCOME.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
-      <p class="home-welcome__closing">{SITE_CLOSING_LINE}</p>
+    <div class="page-section__inner block home-welcome__inner">
+      <Image
+        class="home-welcome__image"
+        src={HOME_WELCOME_IMAGE.image}
+        alt={HOME_WELCOME_IMAGE.altText}
+        width={HOME_WELCOME_IMAGE.width}
+        height={HOME_WELCOME_IMAGE.height}
+      />
+      <div class="home-welcome__text">
+        <h2>{HOME_WELCOME.greeting}</h2>
+        {HOME_WELCOME.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <p class="home-welcome__closing">{SITE_CLOSING_LINE}</p>
+      </div>
     </div>
   </section>
 

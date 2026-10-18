@@ -22,9 +22,24 @@
   font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
 }
 
+/* Photo and text are plain grid children in the normal flow: nothing is positioned over anything else. */
 .home-welcome__inner {
+  --home-welcome-image-max-width: 33.75rem; /* natural width of the source photo (540px) */
+  --home-welcome-image-ratio: 27 / 20; /* 540x400 */
+
+  display: grid;
+  gap: var(--space-4);
+  max-width: var(--reading-max-width);
   background: var(--block-cream);
   box-shadow: var(--shadow-soft);
+}
+
+.home-welcome__image {
+  width: 100%;
+  max-width: var(--home-welcome-image-max-width);
+  aspect-ratio: var(--home-welcome-image-ratio);
+  object-fit: cover;
+  border-radius: var(--radius-medium);
 }
 
 .home-welcome__closing {
@@ -36,6 +51,13 @@
 }
 
 @media (min-width: 48rem) {
+  .home-welcome__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: var(--space-5);
+    max-width: var(--content-max-width);
+  }
+
   .home-hero__block {
     padding-top: var(--space-7);
     padding-bottom: var(--space-7);

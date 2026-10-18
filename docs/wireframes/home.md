@@ -17,6 +17,7 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 | +----------------------+ |
 | +----------------------+ |
 | | cream card           | |
+| | [photo, above text]  | |
 | | Beste bezoeker       | |
 | | (welcome text)       | |
 | | It's Time For You now!| |
@@ -37,9 +38,9 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 |   +--------------------------------------------------------------------------+    |
 |   |            HERO block (teal): TIME FOR YOU (one line), tagline, button    |    |
 |   +--------------------------------------------------------------------------+    |
-|        +----------------------------------------------+                           |
-|        | cream card: welcome text (reading column)    |                           |
-|        +----------------------------------------------+                           |
+|   +--------------------------------------------------------------------------+    |
+|   | cream card:  [photo towel/candles]  |  welcome text                       |    |
+|   +--------------------------------------------------------------------------+    |
 |   +--------------------------------------------------------------------------+    |
 |   | Nieuwsbrief (mint):  [Naam]  [E-mail]  [Schrijf mij in]                   |    |
 |   +--------------------------------------------------------------------------+    |
