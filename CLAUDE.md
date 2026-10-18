@@ -42,6 +42,14 @@ npm run preview   # preview production build
 - **Open questions:** opening hours "Ma-Do : 18h30" kept verbatim (ask about a closing time); the WhatsApp link `wa.me/Stephane` looks invalid and is left out of `SOCIAL_LINKS`.
 - Newsletter form is UI only; storage in D1 is not built yet.
 
+## Deployment (GitHub Pages)
+
+- The site is currently published on **GitHub Pages** (static, `dist/`) via `.github/workflows/deploy.yml` (checkout → `npm ci` → `npm run build` → `upload-pages-artifact` → `deploy-pages`). Cloudflare stays the planned target for backend features.
+- **Repo setting required:** GitHub → Settings → Pages → Source = **GitHub Actions**. With "Deploy from a branch", Jekyll runs on the raw repo and fails on the `---` blocks of `.astro` files.
+- `public/.nojekyll` is copied into `dist/` as an extra guard against Jekyll processing.
+- `astro.config.mjs` sets `site` and `base` (defaults `https://xandrdevx.github.io` + `/time-for-you`; override with env `SITE_URL` / `SITE_BASE_PATH`). With a custom domain on the root use `SITE_BASE_PATH=/` and add a `CNAME` in `public/`.
+- Internal links must go through `buildSitePath()` (`src/lib/sitePaths.ts`); never hardcode `href="/..."`. Use `stripSiteBase()` to compare `Astro.url.pathname` with config paths.
+
 ## Architecture notes
 
 - `src/assets/images/` holds images that go through Astro's image optimisation (logo).
