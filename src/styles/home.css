@@ -1,4 +1,5 @@
-/* Home: the logo colours live in the hero block and the welcome card only. */
+/* Home: the logo colours live in the hero block only; the welcome section is a neutral grey band
+   with a white panel, as on the original page. */
 .home-hero__block {
   background: linear-gradient(150deg, var(--block-teal-dark) 0%, var(--block-teal) 100%);
   color: var(--block-text-on-dark);
@@ -22,44 +23,129 @@
   font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
 }
 
-/* Photo and text are plain grid children in the normal flow: nothing is positioned over anything else. */
-.home-welcome__inner {
-  --home-welcome-image-max-width: 33.75rem; /* natural width of the source photo (540px) */
-  --home-welcome-image-ratio: 27 / 20; /* 540x400 */
+.home-welcome {
+  --home-welcome-photo-offset-top: 4rem; /* photo sits lower than the top of the white panel */
+  --home-welcome-frame-offset: 4rem; /* how far the white outline frame sticks out left and below the photo */
+  --home-welcome-frame-top: 3.5rem;
+  --home-welcome-frame-border: 4px;
+  --home-welcome-text-padding: clamp(var(--space-4), 5vw, 3.5rem);
+  --home-welcome-letter-spacing: 0.4em;
 
+  padding: var(--space-5) var(--space-4);
+  background: var(--color-section-grey);
+}
+
+.home-welcome__layout {
   display: grid;
   gap: var(--space-4);
-  max-width: var(--reading-max-width);
-  background: var(--block-cream);
-  box-shadow: var(--shadow-soft);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.home-welcome__panel {
+  display: none;
+}
+
+.home-welcome__photo {
+  margin: 0;
 }
 
 .home-welcome__image {
   width: 100%;
-  max-width: var(--home-welcome-image-max-width);
-  aspect-ratio: var(--home-welcome-image-ratio);
+  aspect-ratio: 27 / 20; /* source photo is 540x400 */
   object-fit: cover;
-  border-radius: var(--radius-medium);
 }
 
+.home-welcome__text {
+  padding: var(--space-4);
+  background: var(--color-white);
+}
+
+.home-welcome__greeting {
+  margin-bottom: var(--space-4);
+  font-size: clamp(1.0625rem, 3.4vw, 1.375rem);
+  font-weight: 500;
+  letter-spacing: var(--home-welcome-letter-spacing);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* "IT'S / TIME FOR YOU / NOW!": three spaced-out uppercase lines, the middle one in red italic */
 .home-welcome__closing {
   margin: var(--space-4) 0 0;
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 3.4vw, 1.375rem);
+  letter-spacing: var(--home-welcome-letter-spacing);
+  text-transform: uppercase;
+  line-height: 2.4;
+}
+
+.home-welcome__closing span {
+  display: block;
+  white-space: nowrap;
+}
+
+.home-welcome__closing-highlight {
+  padding-left: var(--space-3);
+  color: var(--color-accent-red);
   font-style: italic;
-  color: var(--block-teal);
+}
+
+.home-welcome__closing-tail {
+  padding-left: var(--space-5);
 }
 
 @media (min-width: 48rem) {
-  .home-welcome__inner {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    align-items: center;
-    gap: var(--space-5);
-    max-width: var(--content-max-width);
-  }
-
   .home-hero__block {
     padding-top: var(--space-7);
     padding-bottom: var(--space-7);
+  }
+
+  .home-welcome {
+    padding-block: var(--space-6);
+  }
+
+  /* Columns: [gap][photo only][photo + panel overlap][panel + text]. Photo = columns 2-3,
+     panel = columns 3-4, text = column 4, so the photo never reaches the text column. */
+  .home-welcome__layout {
+    grid-template-columns: 1fr 5fr 1fr 6fr;
+    gap: 0;
+  }
+
+  .home-welcome__panel {
+    display: block;
+    grid-column: 3 / 5;
+    grid-row: 1;
+    background: var(--color-white);
+    z-index: 1;
+  }
+
+  .home-welcome__photo {
+    position: relative;
+    grid-column: 2 / 4;
+    grid-row: 1;
+    align-self: start;
+    margin: var(--home-welcome-photo-offset-top) 0 var(--home-welcome-frame-offset);
+    z-index: 2;
+  }
+
+  /* White outline frame behind the photo (decoration only; it is white on white inside the panel) */
+  .home-welcome__photo::before {
+    content: '';
+    position: absolute;
+    top: var(--home-welcome-frame-top);
+    right: 0;
+    bottom: calc(var(--home-welcome-frame-offset) * -1);
+    left: calc(var(--home-welcome-frame-offset) * -1);
+    border: var(--home-welcome-frame-border) solid var(--color-white);
+    z-index: -1;
+  }
+
+  .home-welcome__text {
+    grid-column: 4;
+    grid-row: 1;
+    padding: var(--home-welcome-text-padding);
+    background: transparent;
+    z-index: 2;
   }
 }

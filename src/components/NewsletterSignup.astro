@@ -1,13 +1,24 @@
 ---
 import '../styles/newsletter.css';
-import { NEWSLETTER_TEXT } from '../config/siteConfig';
+import { Image } from 'astro:assets';
+import { NEWSLETTER_TEXT, SITE_LOGO } from '../config/siteConfig';
 ---
 
-<section class="newsletter page-section" aria-labelledby="newsletter-heading">
-  <div class="page-section__inner block newsletter__block">
-    <div class="newsletter__inner">
-      <h2 id="newsletter-heading">{NEWSLETTER_TEXT.heading}</h2>
-      <p class="newsletter__subheading">{NEWSLETTER_TEXT.subheading}</p>
+<section class="newsletter" aria-labelledby="newsletter-heading">
+  <div class="newsletter__layout">
+    <figure class="newsletter__brand">
+      <Image
+        class="newsletter__logo"
+        src={SITE_LOGO.image}
+        alt={SITE_LOGO.altText}
+        width={SITE_LOGO.newsletterWidth}
+        height={SITE_LOGO.newsletterHeight}
+      />
+      <figcaption class="newsletter__subheading">{NEWSLETTER_TEXT.subheading}</figcaption>
+    </figure>
+
+    <div class="newsletter__content">
+      <h2 id="newsletter-heading" class="newsletter__heading">{NEWSLETTER_TEXT.heading}</h2>
 
       <!-- UI only for now: submission handling (D1 storage) comes in a later task. -->
       <form class="newsletter__form" method="post" action="#">
@@ -15,7 +26,7 @@ import { NEWSLETTER_TEXT } from '../config/siteConfig';
         <input id="newsletter-name" name="name" type="text" placeholder="Naam" autocomplete="name" required />
         <label class="visually-hidden" for="newsletter-email">E-mail</label>
         <input id="newsletter-email" name="email" type="email" placeholder="E-mail" autocomplete="email" required />
-        <button class="button" type="submit">{NEWSLETTER_TEXT.buttonLabel}</button>
+        <button class="newsletter__submit" type="submit">{NEWSLETTER_TEXT.buttonLabel}</button>
       </form>
 
       <p class="newsletter__note">{NEWSLETTER_TEXT.privacyNote}</p>

@@ -10,6 +10,9 @@ export const SITE_LOGO = {
   // 2x the largest displayed size (5.5rem) for sharp rendering on high-density screens
   headerWidth: 176,
   headerHeight: 176,
+  // 2x the displayed size of the large logo in the newsletter section (16rem)
+  newsletterWidth: 512,
+  newsletterHeight: 512,
 };
 
 export const SITE_TAGLINE = 'Voor een ontspannende of energetische massage.';

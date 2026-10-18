@@ -11,6 +11,8 @@
   --color-text-soft: #5f5f5f;
   --color-heading: #232323;
   --color-white: #ffffff;
+  --color-section-grey: #ececec; /* neutral light grey band behind the home welcome panel */
+  --color-accent-red: #d9363e; /* "Time For You" highlight on the home page */
 
   /* Logo colours: only for use inside blocks */
   --block-teal: #0d6a8a;

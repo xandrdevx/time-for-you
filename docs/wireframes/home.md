@@ -23,10 +23,10 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 | | It's Time For You now!| |
 | +----------------------+ |
 | +----------------------+ |
-| | Nieuwsbrief (mint)   | |
+| | [logo] Nieuwsbrief   | |
 | | [Naam][E-mail][Schrijf]| |
 | +----------------------+ |
-| footer block (deep teal) |
+| footer bar (dark green)  |
 +--------------------------+
 ```
 
@@ -38,12 +38,15 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 |   +--------------------------------------------------------------------------+    |
 |   |            HERO block (teal): TIME FOR YOU (one line), tagline, button    |    |
 |   +--------------------------------------------------------------------------+    |
-|   +--------------------------------------------------------------------------+    |
-|   | cream card:  [photo towel/candles]  |  welcome text                       |    |
-|   +--------------------------------------------------------------------------+    |
-|   +--------------------------------------------------------------------------+    |
-|   | Nieuwsbrief (mint):  [Naam]  [E-mail]  [Schrijf mij in]                   |    |
-|   +--------------------------------------------------------------------------+    |
-| footer block (deep teal): contact | hours | social                                 |
+|  grey band:                                                                         |
+|     +-----------+----------------------------------------+                         |
+|     |  [photo]--|-->  BESTE BEZOEKER (spaced caps)        |  white panel            |
+|   [ frame ]     |  welcome text                           |  photo overlaps panel   |
+|                 |  I T ' S / TIME FOR YOU (red) / N O W ! |  edge only, never text  |
+|                 +----------------------------------------+                         |
+|  white band: [big logo]                  Nieuwsbrief                                |
+|              Voor uw ontspanning         [Naam][E-mail][Schrijf mij in] (blue)      |
+|                                          notes                                      |
+| footer bar (dark green): © year Time For You                       [f] [instagram]  |
 +------------------------------------------------------------------------------------+
 ```
