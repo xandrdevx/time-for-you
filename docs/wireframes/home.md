@@ -32,6 +32,7 @@ Neutral page background; the logo colours only appear in the blocks. The hero ti
 ## Desktop
 ```
 +------------------------------------------------------------------------------------+
+| top bar (solid grey): [f][ig]        📍 Adegem  📞 phone  ✉ email  🕒 opening hours |
 | [full logo]  Home Wie ben ik? ... FAQ                          [Contacteer mij]    |
 +------------------------------------------------------------------------------------+
 |  [ photo carousel, full width;  ( o o o o ) progress dots on the photo, bottom ]     |

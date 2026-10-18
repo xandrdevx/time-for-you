@@ -1,0 +1,85 @@
+---
+import '../styles/top-bar.css';
+import {
+  CONTACT_DETAILS,
+  OPENING_HOURS_LINES,
+  OPENING_HOURS_SEPARATOR,
+  SOCIAL_LINKS,
+} from '../config/siteConfig';
+import { CONTACT_ICONS, SOCIAL_ICONS, SOCIAL_ICON_VIEWBOX } from '../config/socialIcons';
+
+const contactItems = [
+  { icon: CONTACT_ICONS.location, text: CONTACT_DETAILS.location, href: undefined },
+  { icon: CONTACT_ICONS.phone, text: CONTACT_DETAILS.phone, href: CONTACT_DETAILS.phoneLink },
+  {
+    icon: CONTACT_ICONS.email,
+    text: CONTACT_DETAILS.email,
+    href: `mailto:${CONTACT_DETAILS.email}`,
+  },
+  {
+    icon: CONTACT_ICONS.hours,
+    text: OPENING_HOURS_LINES.join(OPENING_HOURS_SEPARATOR),
+    href: undefined,
+  },
+];
+---
+
+<!-- A solid bar above the navbar (never over a photo), so the contact details stay readable. -->
+<div class="top-bar">
+  <div class="top-bar__inner">
+    <ul class="top-bar__social">
+      {
+        SOCIAL_LINKS.map((link) => {
+          const icon = SOCIAL_ICONS[link.label];
+          return (
+            <li>
+              <a
+                class="top-bar__social-link"
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+              >
+                {icon && (
+                  <svg
+                    class="top-bar__icon"
+                    viewBox={SOCIAL_ICON_VIEWBOX}
+                    fill={icon.isOutline ? 'none' : 'currentColor'}
+                    stroke={icon.isOutline ? 'currentColor' : 'none'}
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                  >
+                    <path d={icon.path} />
+                  </svg>
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <ul class="top-bar__contact">
+      {
+        contactItems.map((item) => (
+          <li class="top-bar__contact-item">
+            <svg
+              class="top-bar__icon"
+              viewBox={SOCIAL_ICON_VIEWBOX}
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d={item.icon.path} />
+            </svg>
+            {item.href ? <a href={item.href}>{item.text}</a> : <span>{item.text}</span>}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>

@@ -28,6 +28,9 @@ export const CONTACT_DETAILS: ContactDetails = {
 
 export const OPENING_HOURS_LINES: string[] = ['Ma-Do : 18h30', 'Za-Zo 13h-17h', 'Vrij gesloten'];
 
+// Separator between the opening-hours lines when they are shown on one line (top bar).
+export const OPENING_HOURS_SEPARATOR = ' / ';
+
 export const NAVIGATION_ITEMS: NavigationItem[] = [
   { label: 'Home', path: '/' },
   { label: 'Wie ben ik?', path: '/wie-ben-ik' },
