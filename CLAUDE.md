@@ -39,7 +39,7 @@ npm run preview   # preview production build
 - Plan: `PLAN.md`; wireframes for all 9 pages plus the header: `docs/wireframes/`.
 - If `npm run build` fails with "Cannot find native binding", run `npm install` (node_modules was installed on another platform).
 - Wie ben ik (`/wie-ben-ik`) mirrors the original page (https://www.time-for-you.be/index.php/wie-ben-ik): neutral title bar with breadcrumb, then a grey band with a white panel (text left, portrait right; portrait below the text on mobile). Copy and image config live in `src/config/whoAmIContent.ts` (`WHO_AM_I_CONTENT`, `WHO_AM_I_IMAGE`), styles in `src/styles/who-am-i.css`. The portrait is currently imported straight from `claude-input-files/selfie.jpg` (not yet moved to `src/assets/images/`).
-- **Open item for the client:** supply the verbatim original "Wie ben ik?" text and the logo. The paragraphs in `whoAmIContent.ts` are a paraphrase (marked TODO), not the exact copy.
+- **Open item for the client:** the site owner adds the real "Wie ben ik?" text later; the paragraphs in `whoAmIContent.ts` are temporary placeholder text (marked TODO). The logo is also still to be supplied.
 - **Open questions:** opening hours "Ma-Do : 18h30" kept verbatim (ask about a closing time); the WhatsApp link `wa.me/Stephane` looks invalid and is left out of `SOCIAL_LINKS`.
 - Newsletter form is UI only; storage in D1 is not built yet.
 
