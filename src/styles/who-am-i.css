@@ -50,6 +50,12 @@
   white-space: nowrap;
 }
 
+/* Lines inside a paragraph are separated by <br>; paragraphs get roughly one blank line between them,
+   as on the owner's screenshots (claude-input-files/wbi-tekst-*.png) */
+.who-am-i__paragraph {
+  margin-bottom: var(--space-4);
+}
+
 /* Same red italic closing line as the home page */
 .who-am-i__closing {
   margin: var(--space-4) 0 0;

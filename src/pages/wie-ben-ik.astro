@@ -24,7 +24,18 @@ import { buildSitePath } from '../lib/sitePaths';
     <div class="who-am-i__layout">
       <div class="who-am-i__text">
         <h2 class="who-am-i__greeting">{WHO_AM_I_CONTENT.welcomeHeading}</h2>
-        {WHO_AM_I_CONTENT.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        {
+          WHO_AM_I_CONTENT.paragraphs.map((paragraphLines) => (
+            <p class="who-am-i__paragraph">
+              {paragraphLines.map((line, lineIndex) => (
+                <>
+                  {lineIndex > 0 && <br />}
+                  {line}
+                </>
+              ))}
+            </p>
+          ))
+        }
         <p class="who-am-i__closing">{SITE_CLOSING_LINE}</p>
       </div>
 
