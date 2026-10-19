@@ -18,8 +18,6 @@ export const WHO_AM_I_BANNER = {
 // The closing line ("It's Time For You now!") comes from SITE_CLOSING_LINE, so it is not repeated here.
 export const WHO_AM_I_CONTENT = {
   pageHeading: 'Wie ben ik?',
-  breadcrumbHomeLabel: 'Home',
-  breadcrumbAriaLabel: 'Kruimelpad',
   // Shown as a normal text line (not a heading) right under the article heading, as on the original
   welcomeLine: 'Welkom. Mijn naam is Stephane.',
   paragraphs: [

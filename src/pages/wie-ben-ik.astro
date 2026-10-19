@@ -5,7 +5,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { SITE_CLOSING_LINE } from '../config/siteConfig';
 import { WHO_AM_I_BANNER, WHO_AM_I_CONTENT, WHO_AM_I_IMAGE } from '../config/whoAmIContent';
-import { buildSitePath } from '../lib/sitePaths';
 ---
 
 <BaseLayout title={WHO_AM_I_CONTENT.pageHeading}>
@@ -20,21 +19,10 @@ import { buildSitePath } from '../lib/sitePaths';
     />
   </figure>
 
-  <section class="who-am-i-title page-section">
-    <div class="page-section__inner">
-      <h1 class="who-am-i-title__heading">{WHO_AM_I_CONTENT.pageHeading}</h1>
-      <nav class="who-am-i-title__breadcrumb" aria-label={WHO_AM_I_CONTENT.breadcrumbAriaLabel}>
-        <a href={buildSitePath('/')}>{WHO_AM_I_CONTENT.breadcrumbHomeLabel}</a>
-        <span aria-hidden="true">/</span>
-        <span aria-current="page">{WHO_AM_I_CONTENT.pageHeading}</span>
-      </nav>
-    </div>
-  </section>
-
   <section class="who-am-i">
     <div class="who-am-i__layout">
       <div class="who-am-i__text">
-        <h2 class="who-am-i__heading">{WHO_AM_I_CONTENT.pageHeading}</h2>
+        <h1 class="who-am-i__heading">{WHO_AM_I_CONTENT.pageHeading}</h1>
         <p class="who-am-i__paragraph">{WHO_AM_I_CONTENT.welcomeLine}</p>
         {
           WHO_AM_I_CONTENT.paragraphs.map((paragraphLines) => (

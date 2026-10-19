@@ -1,4 +1,4 @@
-/* Wie ben ik: neutral title bar with breadcrumb, then a grey band with a white panel (text + portrait),
+/* Wie ben ik: banner photo, then a grey band with a white panel (text + portrait),
    mirroring the home welcome section. No logo colours here; the page stays neutral. */
 
 /* Full-width banner photo under the navbar, in the normal flow and without text over it.
@@ -16,33 +16,6 @@
   height: var(--who-am-i-banner-height);
   object-fit: cover;
   object-position: var(--who-am-i-banner-focus);
-}
-
-.who-am-i-title {
-  padding-block: var(--space-4);
-  background: var(--color-white);
-  border-bottom: 1px solid var(--color-line);
-}
-
-.who-am-i-title__heading {
-  margin-bottom: var(--space-2);
-  font-size: clamp(1.5rem, 6vw, 2.25rem);
-  white-space: nowrap;
-}
-
-.who-am-i-title__breadcrumb {
-  display: flex;
-  gap: var(--space-2);
-  font-size: 0.9375rem;
-  color: var(--color-text-soft);
-}
-
-.who-am-i-title__breadcrumb a {
-  text-decoration: none;
-}
-
-.who-am-i-title__breadcrumb a:hover {
-  color: var(--color-accent-red);
 }
 
 .who-am-i {
@@ -108,10 +81,6 @@
 @media (min-width: 48rem) {
   .who-am-i {
     padding-block: var(--space-6);
-  }
-
-  .who-am-i-title {
-    padding-block: var(--space-5);
   }
 
   .who-am-i__layout {
