@@ -1,4 +1,4 @@
-import portraitImage from '../../claude-input-files/selfie.jpg';
+import portraitImage from '../assets/images/wie-ben-ik/ikke.jpg';
 
 // TODO: the paragraphs below are temporary placeholder text. The site owner will add the real
 // "Wie ben ik?" copy later (original: https://www.time-for-you.be/index.php/wie-ben-ik).
