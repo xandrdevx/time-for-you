@@ -1,4 +1,16 @@
+import bannerImage from '../assets/images/wie-ben-ik/banner.jpg';
 import portraitImage from '../assets/images/wie-ben-ik/ikke.jpg';
+
+// Full-width banner photo directly under the navbar (original: claude-input-files/wbi-banner.png).
+// On the original the navbar and the page title sit on top of this photo; here it stays in the normal flow
+// with no text over it. Purely decorative, so the alt text is empty.
+export const WHO_AM_I_BANNER = {
+  image: bannerImage,
+  altText: '',
+  // Widths generated for the responsive srcset; the banner always spans the full viewport width
+  responsiveWidths: [640, 1024, 1540],
+  sizes: '100vw',
+};
 
 // Copy supplied by the site owner (claude-input-files/wie-ben-ik-text.md), kept verbatim. The grouping follows the
 // owner's screenshots (claude-input-files/wbi-tekst-1..3.png): each paragraph is a list of lines that are rendered

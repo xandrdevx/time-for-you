@@ -1,5 +1,23 @@
 /* Wie ben ik: neutral title bar with breadcrumb, then a grey band with a white panel (text + portrait),
    mirroring the home welcome section. No logo colours here; the page stays neutral. */
+
+/* Full-width banner photo under the navbar, in the normal flow and without text over it.
+   Fixed strip height (as on the original wbi-banner.png); the photo is cropped to fill it,
+   keeping the woman's face in view. */
+.who-am-i-banner {
+  --who-am-i-banner-height: clamp(10rem, 28vw, 22rem);
+  --who-am-i-banner-focus: 60% 45%;
+
+  margin: 0;
+}
+
+.who-am-i-banner__image {
+  width: 100%;
+  height: var(--who-am-i-banner-height);
+  object-fit: cover;
+  object-position: var(--who-am-i-banner-focus);
+}
+
 .who-am-i-title {
   padding-block: var(--space-4);
   background: var(--color-white);

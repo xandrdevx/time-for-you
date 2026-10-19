@@ -4,11 +4,22 @@ import '../styles/who-am-i.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { SITE_CLOSING_LINE } from '../config/siteConfig';
-import { WHO_AM_I_CONTENT, WHO_AM_I_IMAGE } from '../config/whoAmIContent';
+import { WHO_AM_I_BANNER, WHO_AM_I_CONTENT, WHO_AM_I_IMAGE } from '../config/whoAmIContent';
 import { buildSitePath } from '../lib/sitePaths';
 ---
 
 <BaseLayout title={WHO_AM_I_CONTENT.pageHeading}>
+  <figure class="who-am-i-banner">
+    <Image
+      class="who-am-i-banner__image"
+      src={WHO_AM_I_BANNER.image}
+      alt={WHO_AM_I_BANNER.altText}
+      widths={WHO_AM_I_BANNER.responsiveWidths}
+      sizes={WHO_AM_I_BANNER.sizes}
+      loading="eager"
+    />
+  </figure>
+
   <section class="who-am-i-title page-section">
     <div class="page-section__inner">
       <h1 class="who-am-i-title__heading">{WHO_AM_I_CONTENT.pageHeading}</h1>
