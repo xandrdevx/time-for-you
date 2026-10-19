@@ -22,7 +22,7 @@ export const WHO_AM_I_IMAGE = {
   // Natural size of the source file
   width: 1079,
   height: 2037,
-  // Crop shown on the page (the source is a tall selfie)
+  // Size rendered on the page: same aspect ratio as the source, so the whole photo is shown (no crop)
   displayWidth: 640,
-  displayHeight: 800,
+  displayHeight: 1208,
 };

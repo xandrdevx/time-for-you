@@ -62,14 +62,16 @@
 }
 
 .who-am-i__photo {
-  margin: 0;
+  width: 100%;
+  max-width: 24rem;
+  margin: 0 auto;
 }
 
+/* Whole photo, never cropped: the box follows the source ratio (1079x2037) */
 .who-am-i__image {
   width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 25%; /* keeps the face in view in the tall selfie */
+  aspect-ratio: 1079 / 2037;
+  object-fit: contain;
 }
 
 @media (min-width: 48rem) {
