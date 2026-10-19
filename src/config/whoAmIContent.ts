@@ -8,7 +8,8 @@ export const WHO_AM_I_CONTENT = {
   pageHeading: 'Wie ben ik?',
   breadcrumbHomeLabel: 'Home',
   breadcrumbAriaLabel: 'Kruimelpad',
-  welcomeHeading: 'Welkom. Mijn naam is Stephane.',
+  // Shown as a normal text line (not a heading) right under the article heading, as on the original
+  welcomeLine: 'Welkom. Mijn naam is Stephane.',
   paragraphs: [
     [
       'Time For You is gegroeid vanuit een diepe liefde voor aanraking, rust en het besef hoe waardevol het kan zijn wanneer iemand zich even echt gedragen en veilig mag voelen.',

@@ -41,34 +41,39 @@
   background: var(--color-white);
 }
 
-.who-am-i__greeting {
-  margin-bottom: var(--space-4);
-  font-size: clamp(1.0625rem, 3.4vw, 1.375rem);
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+/* Text column mirrors the original article (claude-input-files/wbi-tekst-*.png): serif body text in the
+   heading colour, a big "Wie ben ik?" heading on top, a plain welcome line, then the paragraphs */
+.who-am-i__text {
+  --who-am-i-text-size: clamp(1rem, 2.6vw, 1.125rem);
+  --who-am-i-text-line-height: 1.7;
+
+  font-family: var(--font-heading);
+  font-size: var(--who-am-i-text-size);
+  line-height: var(--who-am-i-text-line-height);
+  color: var(--color-heading);
+}
+
+.who-am-i__heading {
+  margin-bottom: var(--space-5);
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
   white-space: nowrap;
 }
 
-/* Lines inside a paragraph are separated by <br>; paragraphs get roughly one blank line between them,
-   as on the owner's screenshots (claude-input-files/wbi-tekst-*.png) */
+/* Lines inside a paragraph are separated by <br>; paragraphs get a bit more than one blank line between them */
 .who-am-i__paragraph {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
-/* Same red italic closing line as the home page */
+/* Closing line: larger, same dark serif as the text (no red, italic or capitals, as on the original) */
 .who-am-i__closing {
-  margin: var(--space-4) 0 0;
-  font-family: var(--font-heading);
-  font-size: clamp(1rem, 3.4vw, 1.375rem);
-  font-style: italic;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-accent-red);
+  margin: 0;
+  font-size: clamp(1.375rem, 4.4vw, 1.875rem);
+  font-weight: 600;
+  line-height: 1.3;
 }
 
 .who-am-i__photo {
-  --who-am-i-photo-max-width: 13rem; /* estimate of the original size; adjust if it still differs */
+  --who-am-i-photo-max-width: 12.5rem; /* measured on the owner's screenshot wbi-tekst-1.png */
 
   width: 100%;
   max-width: var(--who-am-i-photo-max-width);
