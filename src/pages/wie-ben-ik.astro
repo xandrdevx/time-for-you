@@ -1,26 +1,42 @@
 ---
+import { Image } from 'astro:assets';
 import '../styles/who-am-i.css';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { SITE_CLOSING_LINE } from '../config/siteConfig';
-import { WHO_AM_I_CONTENT } from '../config/whoAmIContent';
+import { WHO_AM_I_CONTENT, WHO_AM_I_IMAGE } from '../config/whoAmIContent';
+import { buildSitePath } from '../lib/sitePaths';
 ---
 
 <BaseLayout title={WHO_AM_I_CONTENT.pageHeading}>
-  <section class="who-am-i page-section">
-    <div class="page-section__inner who-am-i__layout">
-      <div class="who-am-i__photo" role="img" aria-label={WHO_AM_I_CONTENT.photoPlaceholderLabel}>
-        <!-- TODO: replace with the client's photo ("Ikke 1.jpg") once supplied. -->
-        <span>{WHO_AM_I_CONTENT.photoPlaceholderLabel}</span>
-      </div>
+  <section class="who-am-i-title page-section">
+    <div class="page-section__inner">
+      <h1 class="who-am-i-title__heading">{WHO_AM_I_CONTENT.pageHeading}</h1>
+      <nav class="who-am-i-title__breadcrumb" aria-label={WHO_AM_I_CONTENT.breadcrumbAriaLabel}>
+        <a href={buildSitePath('/')}>{WHO_AM_I_CONTENT.breadcrumbHomeLabel}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{WHO_AM_I_CONTENT.pageHeading}</span>
+      </nav>
+    </div>
+  </section>
 
-      <div class="who-am-i__text block">
-        <h1>{WHO_AM_I_CONTENT.pageHeading}</h1>
-        <h2 class="who-am-i__welcome">{WHO_AM_I_CONTENT.welcomeHeading}</h2>
-        <!-- TODO: paste the client's original "Wie ben ik?" text here once supplied. -->
-        <p class="who-am-i__todo">{WHO_AM_I_CONTENT.textPlaceholder}</p>
+  <section class="who-am-i">
+    <div class="who-am-i__layout">
+      <div class="who-am-i__text">
+        <h2 class="who-am-i__greeting">{WHO_AM_I_CONTENT.welcomeHeading}</h2>
+        {WHO_AM_I_CONTENT.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
         <p class="who-am-i__closing">{SITE_CLOSING_LINE}</p>
       </div>
+
+      <figure class="who-am-i__photo">
+        <Image
+          class="who-am-i__image"
+          src={WHO_AM_I_IMAGE.image}
+          alt={WHO_AM_I_IMAGE.altText}
+          width={WHO_AM_I_IMAGE.displayWidth}
+          height={WHO_AM_I_IMAGE.displayHeight}
+        />
+      </figure>
     </div>
   </section>
 
