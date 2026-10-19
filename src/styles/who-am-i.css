@@ -62,8 +62,10 @@
 }
 
 .who-am-i__photo {
+  --who-am-i-photo-max-width: 16rem; /* estimate of the original size; adjust if it still differs */
+
   width: 100%;
-  max-width: 24rem;
+  max-width: var(--who-am-i-photo-max-width);
   margin: 0 auto;
 }
 
