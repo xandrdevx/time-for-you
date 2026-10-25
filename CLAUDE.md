@@ -46,7 +46,7 @@ npm run preview   # preview production build
 ## Deployment (GitHub Pages)
 
 - The site is currently published on **GitHub Pages** (static, `dist/`) via `.github/workflows/deploy.yml` (checkout → `npm ci` → `npm run build` → `upload-pages-artifact` → `deploy-pages`). Cloudflare stays the planned target for backend features.
-- **Repo setting required:** GitHub → Settings → Pages → Source = **GitHub Actions**. With "Deploy from a branch", Jekyll runs on the raw repo and fails on the `---` blocks of `.astro` files.
+- **Repo setting required:** GitHub → Settings → Pages → Source = **GitHub Actions**. With "Deploy from a branch", Jekyll runs on the raw repo and fails on the `---` blocks of `.astro` files. Symptoms of that wrong setting: a `pages-build-deployment` run failing with "install `faraday-retry` gem" and "Invalid YAML front matter" in an `.astro` file (e.g. `NewsletterSignup.astro`). Fix the setting; do not add a Gemfile or a root `.nojekyll` (that would publish the raw source).
 - `public/.nojekyll` is copied into `dist/` as an extra guard against Jekyll processing.
 - `astro.config.mjs` sets `site` and `base` (defaults `https://xandrdevx.github.io` + `/time-for-you`; override with env `SITE_URL` / `SITE_BASE_PATH`). With a custom domain on the root use `SITE_BASE_PATH=/` and add a `CNAME` in `public/`.
 - Internal links must go through `buildSitePath()` (`src/lib/sitePaths.ts`); never hardcode `href="/..."`. Use `stripSiteBase()` to compare `Astro.url.pathname` with config paths.
